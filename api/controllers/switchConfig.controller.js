@@ -23,6 +23,18 @@ module.exports.list = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.detail = (req, res, next) => {
+  SwitchConfig.findById(req.params.id)
+    .then((element) => {
+      if (element) {
+        res.json(element);
+      } else {
+        res.status(404).json({ message: "Configuration not found" });
+      }
+    })
+    .catch(next);
+};
+
 module.exports.update = (req, res, next) => {
   SwitchConfig.findByIdAndUpdate(req.params.id, req.body, {
     runValidators: true,
