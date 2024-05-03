@@ -69,13 +69,12 @@ module.exports.update = (req, res, next) => {
 module.exports.delete = (req, res, next) => {
   User.findByIdAndDelete(req.user._id)
     .then((user) => {
-      if (user) {
-        // no funciona
-        Configuration.deleteMany({ owner: user._id }).catch(next);
-        res.status(204).send();
-      } else {
-        res.status(404).json({ message: "User not found" });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
       }
+      return Configuration.deleteMany({ owner: user._id }).then(() => {
+        res.status(204).send();
+      });
     })
     .catch(next);
 };

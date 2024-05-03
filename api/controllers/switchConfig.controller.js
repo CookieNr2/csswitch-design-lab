@@ -15,7 +15,8 @@ module.exports.create = (req, res, next) => {
 
 module.exports.list = (req, res, next) => {
   const { limit = process.env.DEFAULT_PAGINATION, page = 0 } = req.query;
-  SwitchConfig.find()
+  const userId = req.user._id;
+  SwitchConfig.find({ owner: userId })
     .sort({ updatedAt: -1 })
     .skip(page * limit)
     .limit(limit)
