@@ -1,4 +1,5 @@
-function Home() {
+
+function Configurator() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -8,4 +9,4 @@ function Home() {
     </div>
   );
 }
-export default Home;
+export default Configurator;
