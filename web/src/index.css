@@ -1,13 +1,19 @@
 * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 .btn-primary {
-  background-color: #474973;
-  border-color: #474973;
+  background-color: #57cc99;
+  border-color: #57cc99;
 }
 .btn-primary:hover {
-  background-color: #161b33;
-  border-color: #161b33;
+  background-color: #22577a;
+  border-color: #22577a;
+}
+.selection-section {
+  background-color: #1d1f21;
 }
