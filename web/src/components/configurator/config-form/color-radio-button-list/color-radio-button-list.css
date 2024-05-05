@@ -1,0 +1,10 @@
+.color-selection h4 {
+  color: #8a8b8d;
+  font-weight: 900 !important;
+}
+.color-selection span {
+  color: #fff;
+}
+.color-selection label {
+  margin: 0 0.5rem;
+}

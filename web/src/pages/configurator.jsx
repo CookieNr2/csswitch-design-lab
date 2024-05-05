@@ -14,7 +14,7 @@ function Configurator() {
       <div className="col-sm-6 col-12">
         <ConfigRender selectedColor={selectedColor} />
       </div>
-      <div className="col-sm-6 col-12 mh-100 selection-section">
+      <div className="col-sm-6 col-12 mh-100 p-5 d-flex selection-section">
         <ConfigForm onColorChange={handleColorChange} />
       </div>
     </div>

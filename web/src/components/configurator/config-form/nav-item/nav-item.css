@@ -1,0 +1,9 @@
+.nav-item a {
+  height: 70px;
+  width: 70px;
+  padding: 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

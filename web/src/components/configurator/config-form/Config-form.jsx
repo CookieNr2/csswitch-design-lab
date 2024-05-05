@@ -5,9 +5,7 @@ import NavItemList from "./nav-item-list/NavItemList";
 import ColorRadioButtonList from "./color-radio-button-list/ColorRadioButtonList";
 
 function ConfigForm({ onCreate }) {
-  const [activeTab, setActiveTab] = useState(
-    process.env.REACT_APP_TAB_BODY
-  );
+  const [activeTab, setActiveTab] = useState("body");
   const [selectedColor, setSelectedColor] = useState(null);
 
   const handleTabChange = (tabId) => {
@@ -19,53 +17,26 @@ function ConfigForm({ onCreate }) {
   };
 
   const colorOptions = [
-    {
-      className: process.env.REACT_APP_COLOR_ORANGE,
-      value: process.env.REACT_APP_COLOR_ORANGE,
-    },
-    {
-      className: process.env.REACT_APP_COLOR_AMBER,
-      value: process.env.REACT_APP_COLOR_AMBER,
-    },
-    {
-      className: process.env.REACT_APP_COLOR_LIME,
-      value: process.env.REACT_APP_COLOR_LIME,
-    },
+    { className: "orange", value: "orange" },
+    { className: "amber", value: "amber" },
+    { className: "lime", value: "lime" },
+    { className: "teal", value: "teal" },
+    { className: "blue", value: "blue" },
+    { className: "indigo", value: "indigo" },
   ];
 
   const navItems = [
-    {
-      tabId: process.env.REACT_APP_TAB_VARIABLE,
-      label: process.env.REACT_APP_TAB_VARIABLE,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_JOY_CONTROLLER_LEFT,
-      label: process.env.REACT_APP_TAB_JOY_CONTROLLER_LEFT,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_JOY_CONTROLLER_RIGHT,
-      label: process.env.REACT_APP_TAB_JOY_CONTROLLER_RIGHT,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_THUMB_STICKS,
-      label: process.env.REACT_APP_TAB_THUMB_STICKS,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_ABXY,
-      label: process.env.REACT_APP_TAB_ABXY,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_DPAD,
-      label: process.env.REACT_APP_TAB_DPAD,
-    },
-    {
-      tabId: process.env.REACT_APP_TAB_UTILS,
-      label: process.env.REACT_APP_TAB_UTILS,
-    },
+    { tabId: "body", label: "Body" },
+    { tabId: "joyControllerLeft", label: "Joy Controller Left" },
+    { tabId: "joyControllerRight", label: "Joy Controller Right" },
+    { tabId: "thumbSticks", label: "Thumb Sticks" },
+    { tabId: "abxy", label: "ABXY" },
+    { tabId: "dpad", label: "DPAD" },
+    { tabId: "utils", label: "Utils" },
   ];
 
   return (
-    <div className="col-sm-6 col-12 mh-100 selection-section">
+    <>
       <NavItemList
         navItems={navItems}
         activeTab={activeTab}
@@ -73,9 +44,10 @@ function ConfigForm({ onCreate }) {
       />
       <ColorRadioButtonList
         colorOptions={colorOptions}
+        tabName={activeTab}
         onChange={handleColorChange}
       />
-    </div>
+    </>
   );
 }
 

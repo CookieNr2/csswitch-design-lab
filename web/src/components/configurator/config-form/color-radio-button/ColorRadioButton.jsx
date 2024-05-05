@@ -1,4 +1,4 @@
-import "./color-radio-button";
+import "./color-radio-button.css";
 function ColorRadioButton({ className, value, onChange }) {
   return (
     <label className={className}>
