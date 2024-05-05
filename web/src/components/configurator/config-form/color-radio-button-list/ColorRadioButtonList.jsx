@@ -2,9 +2,12 @@ import "./color-radio-button-list.css";
 import { useState, useEffect } from "react";
 import ColorRadioButton from "../color-radio-button/ColorRadioButton";
 
-function ColorRadioButtonList({ colorOptions, onChange, tabName }) {
-  console.log(colorOptions);
-  const [selectedColor, setSelectedColor] = useState(colorOptions[0].value);
+function ColorRadioButtonList({ colorOptions, onChange, tab }) {
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  useEffect(() => {
+    setSelectedColor(tab.color);
+  }, [tab]);
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -16,7 +19,7 @@ function ColorRadioButtonList({ colorOptions, onChange, tabName }) {
       <div className="color-selection">
         {selectedColor && (
           <h4 className="mb-4">
-            <span>{tabName} - </span>
+            <span>{tab.label} - </span>
             {selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}
           </h4>
         )}
