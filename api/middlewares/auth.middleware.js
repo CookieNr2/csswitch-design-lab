@@ -31,3 +31,28 @@ module.exports.checkAuth = (req, res, next) => {
         .json({ message: `Unsupported authorization schema ${schema}` });
   }
 };
+
+module.exports.checkAuthOpt = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return next();
+  }
+  const [schema, token] = req.headers.authorization?.split(" ");
+  switch (schema.toUpperCase()) {
+    case "BEARER":
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          return res.status(200).json({ message: err.message });
+        }
+        const sub = decoded.sub;
+        User.findById(sub)
+          .then((user) => {
+            if (user) req.user = user;
+            next();
+          })
+          .catch(next);
+      });
+      break;
+    default:
+      next();
+  }
+};

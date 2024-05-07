@@ -13,24 +13,31 @@ const switchConfigSchema = new Schema(
     },
     body: {
       type: String,
+      require: true,
     },
     joyControllerLeft: {
       type: String,
+      require: true,
     },
     joyControllerRight: {
       type: String,
+      require: true,
     },
     thumbSticks: {
       type: String,
+      require: true,
     },
     abxy: {
       type: String,
+      require: true,
     },
     dpad: {
       type: String,
+      require: true,
     },
     utils: {
       type: String,
+      require: true,
     },
   },
   { timestamps: true }

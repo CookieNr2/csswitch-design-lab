@@ -1,5 +1,4 @@
 import "./nav-item.css";
-import ColorRadioButtonList from "../color-radio-button-list/ColorRadioButtonList";
 
 function NavItem({ activeTab, tabId, label, onClick }) {
   return (

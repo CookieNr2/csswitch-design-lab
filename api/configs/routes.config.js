@@ -6,7 +6,7 @@ const users = require("../controllers/users.controller");
 const auth = require("../middlewares/auth.middleware");
 
 // Configurations CRUD
-router.post("/switch-config", switchConfigs.create);
+router.post("/switch-config", auth.checkAuthOpt, switchConfigs.create);
 router.get("/switch-config", auth.checkAuth, switchConfigs.list);
 router.get("/switch-config/:id", auth.checkAuth, switchConfigs.detail);
 router.patch("/switch-config/:id", auth.checkAuth, switchConfigs.update);

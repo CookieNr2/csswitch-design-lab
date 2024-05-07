@@ -2,10 +2,7 @@ import "./navbar.css";
 
 function Navbar() {
   return (
-    <nav
-      className="navbar bg-navbar border-bottom border-body"
-      data-bs-theme="dark"
-    >
+    <nav className="navbar bg-navbar py-3 border-body" data-bs-theme="dark">
       <div className="container">
         <div className="d-flex align-items-center">
           <a className="navbar-brand">CSSwitch Design Lab</a>
