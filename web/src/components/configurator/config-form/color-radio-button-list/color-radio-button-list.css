@@ -1,4 +1,5 @@
-.color-selection h4 {
+.color-selection h4,
+span {
   color: #8a8b8d;
   font-weight: 900 !important;
 }

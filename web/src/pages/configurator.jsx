@@ -4,13 +4,13 @@ import ConfigRender from "../components/configurator/config-render/Config-render
 import { createConfig } from "../services/api.services";
 
 const initialConfigStatus = {
-  body: { label: "Body", color: "orange" },
-  joyControllerLeft: { label: "Joy Controller Left", color: "orange" },
-  joyControllerRight: { label: "Joy Controller Right", color: "orange" },
-  thumbSticks: { label: "Thumb Sticks", color: "orange" },
-  abxy: { label: "ABXY", color: "orange" },
-  dpad: { label: "DPAD", color: "orange" },
-  utils: { label: "Utils", color: "orange" },
+  body: { label: "Body", color: "#353535" },
+  joyControllerLeft: { label: "Joy Controller Left", color: "#353535" },
+  joyControllerRight: { label: "Joy Controller Right", color: "#353535" },
+  thumbSticks: { label: "Thumb Sticks", color: "#353535" },
+  abxy: { label: "ABXY", color: "#353535" },
+  dpad: { label: "DPAD", color: "#353535" },
+  utils: { label: "Utils", color: "#353535" },
 };
 
 function Configurator() {

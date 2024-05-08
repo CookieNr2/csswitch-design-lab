@@ -1,27 +1,15 @@
-.square {
-  width: 200px;
-  height: 200px;
-  background-color: aquamarine;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .swGlobal {
   display: flex;
-  height: 100vh;
+  height: 80vh;
   font-size: 2em;
   font-family: "Open Sans", sans-serif;
-  background-color: #eee;
+  background: rgb(6, 7, 7);
+  background: linear-gradient(
+    155deg,
+    rgb(34 34 34) 0%,
+    rgba(6, 7, 7, 1) 50%,
+    rgb(0 0 0) 100%
+  );
 }
 
 .switch {
@@ -194,42 +182,6 @@ html {
 .icon-part.right::before {
   top: 1.5em;
   background-color: #e60012;
-}
-
-@keyframes logo-right {
-  0% {
-    transform: translateY(-40%);
-  }
-  25% {
-    transform: translateY(-50%);
-  }
-  30% {
-    transform: translateY(0);
-  }
-  70% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-40%);
-  }
-}
-
-@keyframes logo-icon {
-  0% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(0);
-  }
-  35% {
-    transform: translateY(10%);
-  }
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 .joy-con {

@@ -16,7 +16,7 @@ input {
   position: absolute;
   width: 50px;
   height: 50px;
-  padding: 0;
+  padding: 0px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -29,30 +29,34 @@ input {
   transition: ease 0.3s;
 }
 
-.color-selector span:hover {
-  padding: 10px;
+.black .color-selector .removed span {
+  background: #353535;
 }
 
-.orange .color-selector span {
-  background: #ff5722;
+.purple .color-selector .removed span {
+  background: #815790;
 }
 
-.amber .color-selector span {
-  background: #ffc107;
+.orange .color-selector .removed span {
+  background: #f6bd60;
 }
 
-.lime .color-selector span {
-  background: #8bc34a;
+.sunset-rose .color-selector .removed span {
+  background: #d65d9d;
 }
 
-.teal .color-selector span {
+.lime .color-selector .removed span {
+  background: #31572c;
+}
+
+.teal .color-selector .removed span {
   background: #009688;
 }
 
-.blue .color-selector span {
-  background: #2196f3;
+.blue .color-selector .removed span {
+  background: #1d3557;
 }
 
-.indigo .color-selector span {
+.indigo .color-selector .removed span {
   background: #3f51b5;
 }

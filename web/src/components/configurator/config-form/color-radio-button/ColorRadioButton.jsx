@@ -1,10 +1,14 @@
 import "./color-radio-button.css";
-function ColorRadioButton({ className, value, onChange }) {
+function ColorRadioButton({ className, value, color, onChange }) {
   return (
     <label className={className}>
       <input type="radio" name="color" value={value} onChange={onChange} />
       <div className="color-selector">
-        <span></span>
+        <span
+          style={{
+            background: color,
+          }}
+        ></span>
       </div>
     </label>
   );

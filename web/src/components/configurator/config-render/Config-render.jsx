@@ -1,7 +1,7 @@
 import "./config-render.css";
 
 function ConfigRender({ configStatus }) {
-  console.log(configStatus);
+  console.log("´render ConfigRender", configStatus["joyControllerRight"].color);
   return (
     <>
       <div className="swGlobal">
@@ -67,7 +67,7 @@ function ConfigRender({ configStatus }) {
           <div
             className="joy-con right"
             style={{
-              backgroundColor: configStatus["joyControllerRight"].color,
+              background: configStatus["joyControllerRight"].color,
               boxShadow: `inset -0.125em -0.125em 0.375em rgba(0, 0, 0, 0.5), 
               inset 0.3125em 0 0.0625em -0.25em rgba(0, 0, 0, 0.25), 
               inset -0.375em 0.5625em 0.5em -0.25em ${configStatus["joyControllerRight"].color}, 

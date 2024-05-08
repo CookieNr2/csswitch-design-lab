@@ -1,16 +1,17 @@
 import "./config-form.css";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import NavItemList from "./nav-item-list/NavItemList";
 import ColorRadioButtonList from "./color-radio-button-list/ColorRadioButtonList";
 
 const colorOptions = [
-  { className: "orange", value: "orange" },
-  { className: "amber", value: "amber" },
-  { className: "lime", value: "lime" },
-  { className: "teal", value: "teal" },
-  { className: "blue", value: "blue" },
-  { className: "indigo", value: "indigo" },
+  { className: "black", value: "black", color: "#353535" },
+  { className: "purple", value: "purple", color: "#815790" },
+  { className: "orange", value: "orange", color: "#f6bd60" },
+  { className: "sunset-rose", value: "Sunset Rose", color: "#d65d9d" },
+  { className: "lime", value: "lime", color: "#31572c" },
+  { className: "teal", value: "teal", color: "#009688" },
+  { className: "blue", value: "blue", color: "#1d3557" },
+  { className: "indigo", value: "indigo", color: "#3f51b5" },
 ];
 
 function ConfigForm({ configStatus, setConfigStatus }) {
