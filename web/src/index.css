@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 *,
 *::before,
@@ -14,6 +15,10 @@ html {
 body {
   background-color: #121212;
   height: 100%;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
 }
 .btn-primary {
   background-color: #57cc99;

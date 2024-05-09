@@ -28,6 +28,14 @@ http.interceptors.response.use(
   }
 );
 
+export function createUser(data) {
+  return http.post("/users", data);
+}
+
+export function getProfile() {
+  return http.get("/profile");
+}
+
 export function createConfig(data) {
   return http.post("/switch-config", data);
 }
@@ -36,4 +44,8 @@ export async function login(data) {
   const response = await http.post("/login", data);
   localStorage.setItem("token", response.data.accessToken);
   return response;
+}
+
+export function logout() {
+  localStorage.removeItem("token");
 }

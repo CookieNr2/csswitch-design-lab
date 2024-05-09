@@ -30,7 +30,7 @@ function Login() {
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center align-self-center">
-            <div className="card login-content shadow-lg border-0 mt-5">
+            <div className="card shadow-lg border-0 mt-5">
               <div className="card-body p-5">
                 <h1 className="text-light mb-3">Login</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,10 +75,12 @@ function Login() {
                   </button>
                 </form>
                 <p className="text-white-50 mt-2">
-                  Not a member?{" "}
-                  <a className="link-light" href="">
-                    Create an Account
-                  </a>
+                  <small>
+                    Not a member?{" "}
+                    <a className="link-light" href="">
+                      Create an Account
+                    </a>
+                  </small>
                 </p>
               </div>
             </div>
