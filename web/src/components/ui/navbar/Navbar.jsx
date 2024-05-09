@@ -22,7 +22,7 @@ function Navbar() {
           >
             <i className="bi bi-person-circle"></i> Login
           </a>
-          <a href="#inspiration" className="btn btn-primary mx-1">
+          <a href="#inspiration" className="btn btn-primary rounded-0 mx-1">
             <i className="bi bi-person-fill-add"></i> Sing up
           </a>
         </div>

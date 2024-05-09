@@ -26,37 +26,66 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email address
-        </label>
-        <input
-          required
-          id="email"
-          type="email"
-          className={`form-control ${errors.email ? "is-invalid" : ""}`}
-          {...register("email")}
-        />
-      </div>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center align-self-center">
+            <div className="card login-content shadow-lg border-0 mt-5">
+              <div className="card-body p-5">
+                <h1 className="text-light mb-3">Login</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label text-white-50">
+                      Email address
+                    </label>
+                    <input
+                      required
+                      id="email"
+                      type="email"
+                      className={`form-control ${
+                        errors.email ? "is-invalid" : ""
+                      } bg-transparent border-0 rounded-0`}
+                      {...register("email")}
+                    />
+                  </div>
 
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
-        <input
-          required
-          id="password"
-          type="password"
-          className={`form-control ${errors.password ? "is-invalid" : ""}`}
-          {...register("password")}
-        />
-      </div>
+                  <div className="mb-3">
+                    <label
+                      htmlFor="password"
+                      className="form-label text-white-50"
+                    >
+                      Password
+                    </label>
+                    <input
+                      required
+                      id="password"
+                      type="password"
+                      className={`form-control ${
+                        errors.password ? "is-invalid" : ""
+                      } bg-transparent border-0 rounded-0`}
+                      {...register("password")}
+                    />
+                  </div>
 
-      <button type="submit" className="btn btn-success">
-        Login
-      </button>
-    </form>
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-lg rounded-0 my-3"
+                  >
+                    Login
+                  </button>
+                </form>
+                <p className="text-white-50 mt-2">
+                  Not a member?{" "}
+                  <a className="link-light" href="">
+                    Create an Account
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
