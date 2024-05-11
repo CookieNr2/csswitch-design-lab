@@ -15,21 +15,17 @@ const userSchema = new Schema({
     type: {
       type: String,
       enum: ["Visa", "Master Card"],
-      required: true,
     },
-    coordinates: {
+    cardNumber: {
       type: String,
-      required: true,
     },
   },
   location: {
     street: {
       type: String,
-      required: true,
     },
     postalCode: {
       type: Number,
-      required: true,
     },
   },
   email: {

@@ -17,8 +17,12 @@ body {
   height: 100%;
 }
 .navbar a {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
+}
+.sub-nav {
+  background-color: #1d1f21;
+  margin-right: 40px;
 }
 .btn-primary {
   background-color: #57cc99;
@@ -36,7 +40,7 @@ body {
   min-width: 28rem;
   border-radius: 0;
 }
-.card input {
+input.form-control {
   border-bottom: 1px solid #8e8e8e !important;
-  color: #fff;
+  color: #fff !important;
 }

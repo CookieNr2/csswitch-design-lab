@@ -33,7 +33,11 @@ export function createUser(data) {
 }
 
 export function getProfile() {
-  return http.get("/profile");
+  return http.get("/my-account");
+}
+
+export function updateUser(data) {
+  return http.patch(`/my-account`, data);
 }
 
 export function createConfig(data) {
