@@ -77,7 +77,7 @@ function Login() {
                 <p className="text-white-50 mt-2">
                   <small>
                     Not a member?{" "}
-                    <a className="link-light" href="">
+                    <a className="link-light" href="/register">
                       Create an Account
                     </a>
                   </small>
