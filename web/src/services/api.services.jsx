@@ -44,6 +44,10 @@ export function createConfig(data) {
   return http.post("/switch-config", data);
 }
 
+export function getConfigs(data) {
+  return http.get("/switch-config", data);
+}
+
 export async function login(data) {
   const response = await http.post("/login", data);
   localStorage.setItem("token", response.data.accessToken);

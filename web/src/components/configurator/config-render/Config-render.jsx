@@ -1,18 +1,17 @@
 import "./config-render.css";
 
 function ConfigRender({ configStatus }) {
-  console.log("´render ConfigRender", configStatus["joyControllerRight"].color);
   return (
     <>
       <div className="swGlobal">
         <div className="switch">
           <div className="swBody">
             <div className="volume"></div>
-            <div className="screen">
-              <div className="logo">
-                <div className="icon">
-                  <div className="icon-part left"></div>
-                  <div className="icon-part right"></div>
+            <div class="screen">
+              <div class="logo">
+                <div class="icon">
+                  <div class="icon-part left"></div>
+                  <div class="icon-part right"></div>
                 </div>
                 <h1>
                   <span>Nintendo</span>Switch

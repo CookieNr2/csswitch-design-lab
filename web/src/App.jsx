@@ -1,15 +1,27 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AlertProvider } from "./contexts/alert.context";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import UserData from "./pages/user-account/user-data";
 import UserConfigsList from "./pages/user-account/user-configs-list";
-import { AlertProvider } from "./contexts/alert.context";
 import Configurator from "./pages/configurator";
 import Navbar from "./components/ui/navbar/Navbar";
 import Footer from "./components/ui/footer/Footer";
 
 function App() {
+  const cld = new Cloudinary({ cloud: { cloudName: "dn4v19qto" } });
+
+  const img = cld
+    .image("cld-sample-5")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()).width(500).height(500));
+
   return (
     <>
       <main className="flex-shrink-0">

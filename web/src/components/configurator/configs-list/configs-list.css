@@ -1,0 +1,17 @@
+.configs-list {
+  display: flex;
+  flex-flow: row wrap;
+}
+.configs-list > div {
+  flex: 1 1 33%;
+  max-width: 600px;
+  margin: 5px;
+}
+.configs-list .swGlobal {
+  border-radius: 10px;
+  max-height: 450px;
+  font-size: 1.2em;
+}
+.configs-list button {
+  color: #8a8b8d !important;
+}
