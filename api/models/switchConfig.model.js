@@ -6,6 +6,9 @@ const switchConfigSchema = new Schema(
     name: {
       type: String,
     },
+    previewImg: {
+      type: String,
+    },
     owner: {
       type: mongoose.Types.ObjectId,
       ref: "User",

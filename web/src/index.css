@@ -15,6 +15,20 @@ html {
 body {
   background-color: #121212;
   height: 100%;
+  position: relative;
+}
+.banner {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    144deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(111, 83, 22, 1) 100%
+  );
+  min-height: 35vw;
+}
+.img-banner {
+  width: 100%;
+  max-width: 700px;
 }
 .navbar a {
   color: #fff !important;
@@ -24,6 +38,9 @@ body {
   background-color: #1d1f21;
   margin-right: 40px;
 }
+.actions {
+  background-color: #000;
+}
 .btn-primary {
   background-color: #57cc99;
   border-color: #57cc99;
@@ -31,6 +48,11 @@ body {
 .btn-primary:hover {
   background-color: #22577a;
   border-color: #22577a;
+}
+.btn-secondary {
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
 }
 .selection-section {
   background-color: #1d1f21;

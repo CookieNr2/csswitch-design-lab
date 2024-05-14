@@ -49,7 +49,7 @@ module.exports.profile = (req, res) => {
 };
 
 module.exports.update = (req, res, next) => {
-  console.info(req.body)
+  console.info(req.body);
   User.findByIdAndUpdate(req.user._id, req.body, {
     runValidators: true,
     new: true,

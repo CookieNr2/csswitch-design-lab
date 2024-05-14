@@ -1,3 +1,6 @@
 .bg-navbar {
   background-color: #1f1f1f;
 }
+.navbar-brand {
+  font-weight: 900 !important;
+}
