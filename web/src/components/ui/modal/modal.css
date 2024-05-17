@@ -1,0 +1,11 @@
+.modal-content {
+  background-color: #1f1f1f;
+}
+.modal-body {
+  position: relative;
+}
+.btn-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

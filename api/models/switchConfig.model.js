@@ -11,41 +11,52 @@ const switchConfigSchema = new Schema(
       ref: "User",
       default: null,
     },
-    popularity: {
-      type: Number,
-      default: 0,
-    },
     body: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     joyControllerLeft: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     joyControllerRight: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     thumbSticks: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     abxy: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     dpad: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
     utils: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Colors",
       require: true,
+      autopopulate: true,
     },
   },
   { timestamps: true }
 );
 
+switchConfigSchema.plugin(require("mongoose-autopopulate"));
 const SwitchConfig = mongoose.model("Switch Configuration", switchConfigSchema);
 module.exports = SwitchConfig;

@@ -57,7 +57,7 @@ body {
 .selection-section {
   background-color: #1d1f21;
 }
-.card {
+.card-body {
   background-color: #1f1f1f;
   min-width: 28rem;
   border-radius: 0;

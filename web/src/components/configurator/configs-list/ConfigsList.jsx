@@ -38,13 +38,13 @@ function ConfigsList({ reload, onTemplateButtonClick }) {
     <div className="configs-list">
       {configs.map((config) => {
         const configRenderFormat = {
-          body: { color: { value: config.body } },
-          joyControllerLeft: { color: { value: config.joyControllerLeft } },
-          joyControllerRight: { color: { value: config.joyControllerRight } },
-          thumbSticks: { color: { value: config.thumbSticks } },
-          abxy: { color: { value: config.abxy } },
-          dpad: { color: { value: config.dpad } },
-          utils: { color: { value: config.utils } },
+          body: { color: config.body },
+          joyControllerLeft: { color: config.joyControllerLeft },
+          joyControllerRight: { color: config.joyControllerRight },
+          thumbSticks: { color: config.thumbSticks },
+          abxy: { color: config.abxy },
+          dpad: { color: config.dpad },
+          utils: { color: config.utils },
         };
         return (
           <div key={config._id}>

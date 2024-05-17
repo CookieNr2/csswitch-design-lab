@@ -17,15 +17,18 @@ const switchPartsSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "Colors",
       required: true,
+      autopopulate: true,
     },
     colorOptions: {
       type: [mongoose.Types.ObjectId],
       ref: "Colors",
       required: true,
+      autopopulate: true,
     },
   },
   { timestamps: true }
 );
 
+switchPartsSchema.plugin(require('mongoose-autopopulate'));
 const SwitchParts = mongoose.model("SwitchParts", switchPartsSchema);
 module.exports = SwitchParts;

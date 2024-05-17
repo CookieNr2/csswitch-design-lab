@@ -2,47 +2,36 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ConfigForm from "../components/configurator/config-form/Config-form";
 import ConfigRender from "../components/configurator/config-render/Config-render";
+import Modal from "../components/ui/modal/Modal";
+import OrderForm from "../components/forms/OrderForm";
+import LoginForm from "../components/forms/LoginForm";
 import { createConfig, getParts } from "../services/api.services";
 
 function Configurator() {
   const location = useLocation();
   const [configStatus, setConfigStatus] = useState();
-  const lsc = location.state?.config;
+  const [modalContent, setModalContent] = useState(null);
+  console.log("location.state?.config");
+  console.log(location.state?.config);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        let fetchedInitialConfigStatus = {};
+        let retrievedStatus = {};
         (await getParts()).data.forEach((element) => {
-          fetchedInitialConfigStatus[element.name] = {
+          // Cogemos la configuracion inicial y los valores que tiene por defecto
+          retrievedStatus[element.name] = {
             ...element,
             color: element.defaultColor,
           };
         });
+        // Si hay un estado le modificamos el color
         if (location.state?.config)
-          fetchedInitialConfigStatus = {
-            ...fetchedInitialConfigStatus,
-            ...{
-              body: { ...fetchedInitialConfigStatus.body, value: lsc.body },
-              joyControllerLeft: {
-                ...fetchedInitialConfigStatus.joyControllerLeft,
-                value: lsc.joyControllerLeft,
-              },
-              joyControllerRight: {
-                ...fetchedInitialConfigStatus.joyControllerRight,
-                value: lsc.joyControllerRight,
-              },
-              thumbSticks: {
-                ...fetchedInitialConfigStatus.thumbSticks,
-                value: lsc.thumbSticks,
-              },
-              abxy: { ...fetchedInitialConfigStatus.abxy, value: lsc.abxy },
-              dpad: { ...fetchedInitialConfigStatus.dpad, value: lsc.dpad },
-              utils: { ...fetchedInitialConfigStatus.utils, value: lsc.utils },
-            },
-          };
-        console.log(fetchedInitialConfigStatus);
-        setConfigStatus(fetchedInitialConfigStatus);
+          Object.keys(retrievedStatus).forEach(function (key, index) {
+            retrievedStatus[key].color = location.state?.config[key];
+          });
+        console.log(retrievedStatus);
+        setConfigStatus(retrievedStatus);
       } catch (error) {
         console.error(error);
       }
@@ -52,17 +41,37 @@ function Configurator() {
   }, []);
 
   const saveConfig = () => {
-    console.log(configStatus);
-    createConfig({
-      name: "New config",
-      body: configStatus.body.color.value,
-      joyControllerLeft: configStatus.joyControllerLeft.color.value,
-      joyControllerRight: configStatus.joyControllerRight.color.value,
-      thumbSticks: configStatus.thumbSticks.color.value,
-      abxy: configStatus.abxy.color.value,
-      dpad: configStatus.dpad.color.value,
-      utils: configStatus.utils.color.value,
+    const modStatus = configStatus;
+    Object.keys(configStatus).forEach(function (key, index) {
+      modStatus[key] = modStatus[key].color;
     });
+
+    createConfig({
+      ...modStatus,
+      name: "New config",
+    });
+  };
+
+  const handleSubmitRequest = () => {
+    setModalContent(<OrderForm onSubmit={handleOrderSubmit} />);
+    const modal = new BootstrapModal(document.getElementById("modal"));
+    modal.show();
+  };
+
+  const handleSaveDraft = () => {
+    setModalContent(<LoginForm onSubmit={handleLoginSubmit} />);
+    const modal = new BootstrapModal(document.getElementById("modal"));
+    modal.show();
+  };
+
+  const handleOrderSubmit = (data) => {
+    // Handle the order form submission
+    console.log("Order submitted:", data);
+  };
+
+  const handleLoginSubmit = (data) => {
+    // Handle the login form submission
+    console.log("Login submitted:", data);
   };
 
   function displayConfigurator() {
@@ -86,17 +95,23 @@ function Configurator() {
             <input id="configName"></input>
             <button
               className="btn btn-primary btn-lg rounded-0 my-3 mx-2"
-              onClick={saveConfig}
+              data-bs-toggle="modal"
+              data-bs-target="#modal"
+              onClick={handleSubmitRequest}
+              // onClick={saveConfig}
             >
               Submit request
             </button>
             <button
               className="btn btn-secondary btn-lg rounded-0 my-3 mx-2"
-              onClick={saveConfig}
+              data-bs-toggle="modal"
+              data-bs-target="#modal"
+              onClick={handleSaveDraft}
             >
               Save draft
             </button>
           </div>
+          <Modal>{modalContent}</Modal>
         </>
       );
   }
