@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const SwitchConfig = require("../models/switchConfig.model");
+const SwitchParts = require("../models/switchParts.model");
 
 module.exports.create = (req, res, next) => {
   console.log(req.user);
-  SwitchConfig.create({ ...req.body, owner: req.user?._id })
+  SwitchParts.create(req.body)
     .then((newElem) => res.status(201).json(newElem))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -14,20 +14,11 @@ module.exports.create = (req, res, next) => {
     });
 };
 
-exports.popular = (req, res, next) => {
-  const { limit = process.env.DEFAULT_PAGINATION, page = 0 } = req.query;
-  SwitchConfig.find()
-    .sort({ updatedAt: -1 })
-    .skip(page * limit)
-    .limit(limit)
-    .then((configs) => res.json(configs))
-    .catch(next);
-};
-
 module.exports.list = (req, res, next) => {
   const { limit = process.env.DEFAULT_PAGINATION, page = 0 } = req.query;
-  const userId = req.user._id;
-  SwitchConfig.find({ owner: userId })
+  SwitchParts.find()
+    .populate("colorOptions")
+    .populate("defaultColor")
     .sort({ updatedAt: -1 })
     .skip(page * limit)
     .limit(limit)
@@ -36,25 +27,25 @@ module.exports.list = (req, res, next) => {
 };
 
 module.exports.detail = (req, res, next) => {
-  SwitchConfig.findById(req.params.id)
+  SwitchParts.findById(req.params.id)
     .then((element) => {
       if (element) {
         res.json(element);
       } else {
-        res.status(404).json({ message: "Configuration not found" });
+        res.status(404).json({ message: "Color not found" });
       }
     })
     .catch(next);
 };
 
 module.exports.update = (req, res, next) => {
-  SwitchConfig.findByIdAndUpdate(req.params.id, req.body, {
+  SwitchParts.findByIdAndUpdate(req.params.id, req.body, {
     runValidators: true,
     new: true,
   })
     .then((element) => {
       if (element) res.json(element);
-      else res.status(404).json({ message: "Configuration not found" });
+      else res.status(404).json({ message: "Color not found" });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -66,12 +57,12 @@ module.exports.update = (req, res, next) => {
 };
 
 module.exports.delete = (req, res, next) => {
-  SwitchConfig.findByIdAndDelete(req.params.id)
+  SwitchParts.findByIdAndDelete(req.params.id)
     .then((element) => {
       if (element) {
         res.status(204).send();
       } else {
-        res.status(404).json({ message: "Configuration not found" });
+        res.status(404).json({ message: "Color not found" });
       }
     })
     .catch(next);

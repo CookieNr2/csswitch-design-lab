@@ -23,16 +23,26 @@ function Navbar() {
           </a>
         </div>
         <ul className="mb-0">
-          <li className="btn btn-link link-light text-decoration-none mx-1">
-            <NavLink to="/login">
-              <i className="bi bi-person-circle"></i> Login
-            </NavLink>
-          </li>
-          <li className="btn btn-primary rounded-0 mx-1">
-            <NavLink to="/register">
-              <i className="bi bi-person-fill-add"></i> Register
-            </NavLink>
-          </li>
+          {user ? (
+            <li className="btn btn-link link-light text-decoration-none mx-1">
+              <NavLink to="/profile/configurations">
+                <i className="bi bi-person-circle"></i> My Account
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li className="btn btn-link link-light text-decoration-none mx-1">
+                <NavLink to="/login">
+                  <i className="bi bi-person-circle"></i> Login
+                </NavLink>
+              </li>
+              <li className="btn btn-primary rounded-0 mx-1">
+                <NavLink to="/register">
+                  <i className="bi bi-person-fill-add"></i> Register
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>

@@ -2,10 +2,11 @@ import "./color-radio-button-list.css";
 import { useState, useEffect } from "react";
 import ColorRadioButton from "../color-radio-button/ColorRadioButton";
 
-function ColorRadioButtonList({ colorOptions, onChange, tab }) {
+function ColorRadioButtonList({ onChange, tab }) {
   let selectedColor = "Orange";
-  colorOptions.forEach((elem) => {
-    if (elem.color == tab.color) selectedColor = elem.value;
+  console.log(tab);
+  tab.colorOptions.forEach((elem) => {
+    if (elem.value == tab.value) selectedColor = elem.name;
   });
 
   return (
@@ -13,18 +14,17 @@ function ColorRadioButtonList({ colorOptions, onChange, tab }) {
       <div className="color-selection">
         {selectedColor && (
           <h4 className="mb-4">
-            <span>{tab.label} - </span>
+            <span>{tab.displayName} - </span>
             {selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}
           </h4>
         )}
-        {colorOptions.map((colorOption) => (
+        {tab.colorOptions.map((colorOption) => (
           <ColorRadioButton
-            key={colorOption.value}
+            key={colorOption.name}
             className={colorOption.className}
-            value={colorOption.value}
-            color={colorOption.color}
-            checked={tab.color === colorOption.value}
-            onChange={() => onChange(colorOption.color)}
+            color={colorOption.value}
+            checked={tab.value === colorOption.name}
+            onChange={() => onChange(colorOption)}
           />
         ))}
       </div>

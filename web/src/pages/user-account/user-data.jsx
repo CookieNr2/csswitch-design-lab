@@ -42,7 +42,7 @@ function UpdateUserData() {
   return (
     <div className="container-fluid">
       <div className="row d-flex align-self-stretch">
-        <UserNavbar />
+        <UserNavbar activeTab="My Data" />
         <div className="col-sm-8 col-md-8 col-lg-8 mt-5">
           <h1 className="text-light mb-5">Update Account</h1>
           <form

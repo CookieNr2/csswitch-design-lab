@@ -1,40 +1,50 @@
 import "./configs-list.css";
 import { useEffect, useState } from "react";
-import { getConfigs } from "../../../services/api.services";
+import { getConfigs, getPopularConfigs } from "../../../services/api.services";
 import ConfigRender from "../config-render/Config-render";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function ConfigsList({ reload, onTemplateButtonClick }) {
   const [configs, setConfigs] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isProfileConfigurations =
+    location.pathname === "/profile/configurations";
 
   useEffect(() => {
-    async function fetchConfigs() {
+    async function fetchData() {
       try {
-        const { data: fetchedConfigs } = await getConfigs();
-        setConfigs(fetchedConfigs);
+        let fetchedConfigs;
+        if (isProfileConfigurations) {
+          fetchedConfigs = await getConfigs();
+        } else {
+          fetchedConfigs = await getPopularConfigs();
+        }
+        setConfigs(fetchedConfigs.data);
       } catch (error) {
         console.error(error);
       }
     }
 
-    fetchConfigs();
-  }, [reload]);
+    fetchData();
+  }, [reload, isProfileConfigurations]);
 
   const handleTemplateButtonClick = (config) => {
     navigate("/configurator", { state: { config } });
   };
+
   return (
     <div className="configs-list">
       {configs.map((config) => {
         const configRenderFormat = {
-          body: { color: config.body },
-          joyControllerLeft: { color: config.joyControllerLeft },
-          joyControllerRight: { color: config.joyControllerRight },
-          thumbSticks: { color: config.thumbSticks },
-          abxy: { color: config.abxy },
-          dpad: { color: config.dpad },
-          utils: { color: config.utils },
+          body: { color: { value: config.body } },
+          joyControllerLeft: { color: { value: config.joyControllerLeft } },
+          joyControllerRight: { color: { value: config.joyControllerRight } },
+          thumbSticks: { color: { value: config.thumbSticks } },
+          abxy: { color: { value: config.abxy } },
+          dpad: { color: { value: config.dpad } },
+          utils: { color: { value: config.utils } },
         };
         return (
           <div key={config._id}>
@@ -44,7 +54,10 @@ function ConfigsList({ reload, onTemplateButtonClick }) {
               className="btn btn-link link-light text-decoration-none"
               onClick={() => handleTemplateButtonClick(config)}
             >
-              Use as a template <i class="mx-1 bi bi-chevron-right"></i>
+              {isProfileConfigurations
+                ? "Edit my configuration"
+                : "Use as a template"}{" "}
+              <i className="mx-1 bi bi-chevron-right"></i>
             </button>
           </div>
         );

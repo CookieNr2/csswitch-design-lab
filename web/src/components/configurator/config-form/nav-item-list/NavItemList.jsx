@@ -9,7 +9,7 @@ function NavItemList({ navItems, activeTab, onTabChange }) {
             key={item[0]}
             activeTab={activeTab}
             tabId={item[0]}
-            label={item[1].label}
+            label={item[1].displayName}
             onClick={onTabChange}
           />
         );

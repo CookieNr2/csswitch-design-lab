@@ -28,6 +28,10 @@ http.interceptors.response.use(
   }
 );
 
+export function getParts() {
+  return http.get("/switch-parts");
+}
+
 export function createUser(data) {
   return http.post("/users", data);
 }
@@ -46,6 +50,10 @@ export function createConfig(data) {
 
 export function getConfigs(data) {
   return http.get("/switch-config", data);
+}
+
+export function getPopularConfigs(data) {
+  return http.get("/popular-configs", data);
 }
 
 export async function login(data) {
