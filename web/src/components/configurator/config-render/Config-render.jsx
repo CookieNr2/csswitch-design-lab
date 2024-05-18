@@ -1,6 +1,10 @@
 import "./config-render.css";
 
 function ConfigRender({ configStatus }) {
+  if (!configStatus?.body?.color) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <div className="swGlobal">
@@ -63,8 +67,22 @@ function ConfigRender({ configStatus }) {
             </div>
 
             <div className="stick"></div>
-            <div className="select"></div>
-            <div className="capture"></div>
+            <div
+              className="select"
+              style={{
+                background: configStatus["utils"].color.value,
+              }}
+            ></div>
+            <div
+              className="capture"
+              style={{
+                background: configStatus["utils"].color.value,
+                boxShadow: `inset 0 0.25em 0.5em -0.0625em rgba(255, 255, 255, 0.1),
+                inset 0 0.015625em 0.03125em -0.015625em rgba(255, 255, 255, 0.5),
+                inset 0 0 0.03125em rgba(0, 0, 0, 1),
+                0 0.015625em 0 0.03125em ${configStatus["utils"].color.value}BF`,
+              }}
+            ></div>
             <div className="shoulder l"></div>
           </div>
 

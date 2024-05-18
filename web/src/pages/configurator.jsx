@@ -11,10 +11,8 @@ function Configurator() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isLoggedIn } = useContext(AuthContext);
-  const [configStatus, setConfigStatus] = useState();
+  const [configStatus, setConfigStatus] = useState(null);
   const [modalContent, setModalContent] = useState(null);
-  console.log("location.state?.config");
-  console.log(location.state?.config);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,10 +52,6 @@ function Configurator() {
     });
   };
 
-  const handleShowModal = (content) => {
-    setModalContent(content);
-  };
-
   const handleSubmitRequest = () => {
     setModalContent(<OrderForm onSubmit={handleOrderSubmit} />);
   };
@@ -71,9 +65,10 @@ function Configurator() {
     }
   };
 
-  const handleOrderSubmit = async (data, configId) => {
+  const handleOrderSubmit = async (data) => {
     try {
-      const orderData = { ...data, configId };
+      const config = await createConfig(configStatus);
+      const orderData = { ...data, switchConfig: config.data };
       await createOrder(orderData);
       console.log("Order submitted:", orderData);
     } catch (error) {

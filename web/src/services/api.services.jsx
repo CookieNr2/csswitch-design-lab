@@ -16,7 +16,7 @@ http.interceptors.response.use(
   },
   function (error) {
     if (
-      error.response.status === 401 &&
+      error.response?.status === 401 &&
       location.pathname !== "/login" &&
       location.pathname !== "/register"
     ) {
@@ -48,12 +48,20 @@ export function createConfig(data) {
   return http.post("/switch-config", data);
 }
 
+export function updateConfig(data) {
+  return http.patch("/switch-config/:id", data);
+}
+
 export function getConfigs(data) {
   return http.get("/switch-config", data);
 }
 
 export function getPopularConfigs(data) {
   return http.get("/popular-configs", data);
+}
+
+export function createOrder(data) {
+  return http.post("/orders", data);
 }
 
 export async function login(data) {

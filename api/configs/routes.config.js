@@ -30,7 +30,7 @@ router.post("/login", users.login);
 router.delete("/my-account", auth.checkAuth, users.delete);
 
 // Orders CRUD
-router.post("/orders", orders.create);
+router.post("/orders", auth.checkAuthOpt, orders.create);
 // router.get("/orders", auth.checkAuth, orders.list);
 // router.get("/orders/:id", auth.checkAuth, orders.detail);
 

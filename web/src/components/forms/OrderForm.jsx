@@ -7,10 +7,15 @@ function OrderForm({ onSubmit }) {
     formState: { errors },
   } = useForm();
 
+  const handleFormSubmit = (data) => {
+    console.log("Form data:", data); // Log form data to check its structure
+    onSubmit(data);
+  };
+
   return (
     <div className="card-body p-5">
       <h1 className="text-light mb-3">Place Order</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className="mb-3">
           <label htmlFor="firstName" className="form-label text-white-50">
             First Name
