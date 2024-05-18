@@ -1,13 +1,19 @@
 import "./config-render.css";
 
-function ConfigRender({ configStatus }) {
+function ConfigRender({ configStatus, isDisplay }) {
   if (!configStatus?.body?.color) {
     return <p>Loading...</p>;
   }
 
+  const customBg = isDisplay
+    ? {
+        background: `linear-gradient(328deg, ${configStatus["joyControllerLeft"].color.value}4D 0%, ${configStatus["joyControllerRight"].color.value}4D 100%)`,
+      }
+    : {};
+
   return (
     <>
-      <div className="swGlobal">
+      <div style={customBg} className="swGlobal">
         <div className="switch">
           <div
             className="swBody"

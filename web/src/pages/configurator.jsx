@@ -30,7 +30,6 @@ function Configurator() {
           Object.keys(retrievedStatus).forEach(function (key, index) {
             retrievedStatus[key].color = location.state?.config[key];
           });
-        console.log(retrievedStatus);
         setConfigStatus(retrievedStatus);
       } catch (error) {
         console.error(error);
@@ -46,7 +45,7 @@ function Configurator() {
       modStatus[key] = modStatus[key].color;
     });
 
-    createConfig({
+    return createConfig({
       ...modStatus,
       name: "New config",
     });
@@ -57,9 +56,10 @@ function Configurator() {
   };
 
   const handleSaveDraft = () => {
-    if (isLoggedIn) {
+    if (isLoggedIn()) {
       console.log("hi");
       saveConfig();
+      navigate("/profile");
     } else {
       navigate("/login");
     }
@@ -67,7 +67,7 @@ function Configurator() {
 
   const handleOrderSubmit = async (data) => {
     try {
-      const config = await createConfig(configStatus);
+      const config = await saveConfig();
       const orderData = { ...data, switchConfig: config.data };
       await createOrder(orderData);
       console.log("Order submitted:", orderData);
@@ -81,11 +81,11 @@ function Configurator() {
     else
       return (
         <>
-          <div className="container-fluid d-flex px-0">
-            <div className="col-sm-6 col-12">
+          <div className="container-fluid d-flex flex-wrap px-0">
+            <div className="col-12 col-lg-6">
               <ConfigRender configStatus={configStatus} />
             </div>
-            <div className="col-sm-6 col-12 p-5 d-flex selection-section">
+            <div className="col-12 col-lg-6 p-5 selection-section">
               <ConfigForm
                 configStatus={configStatus}
                 setConfigStatus={setConfigStatus}

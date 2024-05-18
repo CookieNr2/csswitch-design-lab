@@ -9,8 +9,7 @@ function ConfigsList({ reload, onTemplateButtonClick }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isProfileConfigurations =
-    location.pathname === "/profile/configurations";
+  const isProfileConfigurations = location.pathname.startsWith("/profile");
 
   useEffect(() => {
     async function fetchData() {
@@ -48,7 +47,7 @@ function ConfigsList({ reload, onTemplateButtonClick }) {
         };
         return (
           <div key={config._id}>
-            <ConfigRender configStatus={configRenderFormat} />
+            <ConfigRender configStatus={configRenderFormat} isDisplay={true} />
             <button
               type="button"
               className="btn btn-link link-light text-decoration-none"

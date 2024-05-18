@@ -17,6 +17,12 @@
     height: 60vh;
   }
 }
+@media (max-width: 769px) {
+  .swGlobal {
+    height: 45vh;
+    font-size: 3.2vw;
+  }
+}
 .switch {
   position: relative;
   z-index: 1;

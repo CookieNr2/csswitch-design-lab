@@ -29,7 +29,8 @@ export function AuthContextProvider({ children }) {
   }
 
   function isLoggedIn() {
-    return user !== undefined;
+    console.log(user);
+    return user;
   }
 
   function doLogout() {

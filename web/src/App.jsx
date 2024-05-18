@@ -37,6 +37,7 @@ function App() {
               path="/profile/configurations"
               element={<UserConfigsList />}
             />
+            <Route path="/profile" element={<UserConfigsList />} />
           </Routes>
         </AlertProvider>
         <Footer />

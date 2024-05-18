@@ -7,3 +7,9 @@
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 769px) {
+  .nav-item a {
+    height: 50px;
+    width: 50px;
+  }
+}

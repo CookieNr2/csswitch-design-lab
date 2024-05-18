@@ -1,0 +1,11 @@
+.nav-pills {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 769px) {
+  .nav-pills {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+}

@@ -6,6 +6,9 @@
   flex: 1 1 33%;
   max-width: 600px;
   margin: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .configs-list .swGlobal {
   border-radius: 10px;
@@ -14,4 +17,11 @@
 }
 .configs-list button {
   color: #8a8b8d !important;
+  margin-top: -50px;
+}
+
+@media (max-width: 1024px) {
+  .configs-list .swGlobal {
+    font-size: small;
+  }
 }
