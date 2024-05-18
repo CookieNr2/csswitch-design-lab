@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const SwitchConfig = require("../models/switchConfig.model");
 
 module.exports.create = (req, res, next) => {
-  console.log(req.user);
   SwitchConfig.create({ ...req.body, owner: req.user?._id })
     .then((newElem) => res.status(201).json(newElem))
     .catch((err) => {

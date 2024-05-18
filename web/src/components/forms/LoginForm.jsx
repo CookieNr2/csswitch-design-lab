@@ -18,7 +18,6 @@ function LoginForm() {
   async function onSubmit(data) {
     try {
       await doLogin(data);
-
       navigate("/");
     } catch (err) {
       showAlert("invalid credentials");

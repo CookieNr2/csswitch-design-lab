@@ -28,6 +28,10 @@ export function AuthContextProvider({ children }) {
     fetchProfile();
   }
 
+  function isLoggedIn() {
+    return user !== undefined;
+  }
+
   function doLogout() {
     setUser(null);
     logout();
@@ -37,6 +41,7 @@ export function AuthContextProvider({ children }) {
   const value = {
     user,
     doLogin,
+    isLoggedIn,
     doLogout,
   };
 

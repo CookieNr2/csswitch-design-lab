@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../contexts/auth.context";
+import { useLocation, useNavigate } from "react-router-dom";
 import ConfigForm from "../components/configurator/config-form/Config-form";
 import ConfigRender from "../components/configurator/config-render/Config-render";
 import Modal from "../components/ui/modal/Modal";
 import OrderForm from "../components/forms/OrderForm";
-import LoginForm from "../components/forms/LoginForm";
-import { createConfig, getParts } from "../services/api.services";
+import { createConfig, createOrder, getParts } from "../services/api.services";
 
 function Configurator() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const { isLoggedIn } = useContext(AuthContext);
   const [configStatus, setConfigStatus] = useState();
   const [modalContent, setModalContent] = useState(null);
   console.log("location.state?.config");
@@ -52,26 +54,31 @@ function Configurator() {
     });
   };
 
+  const handleShowModal = (content) => {
+    setModalContent(content);
+  };
+
   const handleSubmitRequest = () => {
     setModalContent(<OrderForm onSubmit={handleOrderSubmit} />);
-    const modal = new BootstrapModal(document.getElementById("modal"));
-    modal.show();
   };
 
   const handleSaveDraft = () => {
-    setModalContent(<LoginForm onSubmit={handleLoginSubmit} />);
-    const modal = new BootstrapModal(document.getElementById("modal"));
-    modal.show();
+    if (isLoggedIn) {
+      console.log("hi");
+      saveConfig();
+    } else {
+      navigate("/login");
+    }
   };
 
-  const handleOrderSubmit = (data) => {
-    // Handle the order form submission
-    console.log("Order submitted:", data);
-  };
-
-  const handleLoginSubmit = (data) => {
-    // Handle the login form submission
-    console.log("Login submitted:", data);
+  const handleOrderSubmit = async (data, configId) => {
+    try {
+      const orderData = { ...data, configId };
+      await createOrder(orderData);
+      console.log("Order submitted:", orderData);
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
   };
 
   function displayConfigurator() {
@@ -98,14 +105,11 @@ function Configurator() {
               data-bs-toggle="modal"
               data-bs-target="#modal"
               onClick={handleSubmitRequest}
-              // onClick={saveConfig}
             >
               Submit request
             </button>
             <button
               className="btn btn-secondary btn-lg rounded-0 my-3 mx-2"
-              data-bs-toggle="modal"
-              data-bs-target="#modal"
               onClick={handleSaveDraft}
             >
               Save draft

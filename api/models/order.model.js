@@ -25,6 +25,11 @@ const orderSchema = new Schema(
         required: true,
       },
     },
+    owner: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
     switchConfig: {
       type: mongoose.Types.ObjectId,
       ref: "Switch Configuration",

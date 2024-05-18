@@ -5,6 +5,7 @@ const switchConfigs = require("../controllers/switchConfig.controller");
 const colors = require("../controllers/colors.controller");
 const switchParts = require("../controllers/switchParts.controller");
 const users = require("../controllers/users.controller");
+const orders = require("../controllers/orders.controller");
 const auth = require("../middlewares/auth.middleware");
 
 // Configurations CRUD
@@ -28,8 +29,8 @@ router.patch("/my-account", auth.checkAuth, users.update);
 router.post("/login", users.login);
 router.delete("/my-account", auth.checkAuth, users.delete);
 
-// Users CRUD
-router.post("/orders", users.create);
+// Orders CRUD
+router.post("/orders", orders.create);
 // router.get("/orders", auth.checkAuth, orders.list);
 // router.get("/orders/:id", auth.checkAuth, orders.detail);
 
