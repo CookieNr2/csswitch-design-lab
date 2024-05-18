@@ -6,7 +6,7 @@ function ColorRadioButtonList({ onChange, tab }) {
   let selectedColor = "Orange";
   console.log(tab);
   tab.colorOptions.forEach((elem) => {
-    if (elem.value == tab.value) selectedColor = elem.name;
+    if (elem.name == tab.color.name) selectedColor = elem.name;
   });
 
   return (
@@ -20,11 +20,10 @@ function ColorRadioButtonList({ onChange, tab }) {
         )}
         {tab.colorOptions.map((colorOption) => (
           <ColorRadioButton
-            key={colorOption.name}
             className={colorOption.className}
             color={colorOption.value}
-            checked={tab.value === colorOption.name}
             onChange={() => onChange(colorOption)}
+            isActive={selectedColor === colorOption.name}
           />
         ))}
       </div>
