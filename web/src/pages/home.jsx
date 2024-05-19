@@ -21,8 +21,8 @@ function Home() {
         <div>
           <img
             className="img-banner"
-            src="../../public/csswitch-banner.png"
-            alt=""
+            src="/csswitch-banner.png"
+            alt="CSSwitch Design Lab"
           />
         </div>
       </div>

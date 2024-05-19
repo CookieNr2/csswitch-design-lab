@@ -22,17 +22,7 @@ function ConfigRender({ configStatus, isDisplay }) {
             }}
           >
             <div className="volume"></div>
-            <div className="screen">
-              <div className="logo">
-                <div className="icon">
-                  <div className="icon-part left"></div>
-                  <div className="icon-part right"></div>
-                </div>
-                <h1>
-                  <span>Nintendo</span>Switch
-                </h1>
-              </div>
-            </div>
+            <div className="screen"></div>
           </div>
 
           <div

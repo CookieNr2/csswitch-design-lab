@@ -33,12 +33,14 @@ function Navbar() {
             <>
               <li className="btn btn-link link-light text-decoration-none mx-1">
                 <NavLink to="/login">
-                  <i className="bi bi-person-circle"></i> Login
+                  <i className="bi bi-person-circle"></i>
+                  <span className="d-sm-none d-md-inline"> Login</span>
                 </NavLink>
               </li>
               <li className="btn btn-primary rounded-0 mx-1">
                 <NavLink to="/register">
-                  <i className="bi bi-person-fill-add"></i> Register
+                  <i className="bi bi-person-fill-add"></i>
+                  <span className="d-sm-none d-md-inline"> Register</span>
                 </NavLink>
               </li>
             </>

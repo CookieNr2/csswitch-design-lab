@@ -93,22 +93,26 @@ function Configurator() {
             </div>
           </div>
           <div className="actions">
-            <p>Name</p>
-            <input id="configName"></input>
-            <button
-              className="btn btn-primary btn-lg rounded-0 my-3 mx-2"
-              data-bs-toggle="modal"
-              data-bs-target="#modal"
-              onClick={handleSubmitRequest}
-            >
-              Submit request
-            </button>
-            <button
-              className="btn btn-secondary btn-lg rounded-0 my-3 mx-2"
-              onClick={handleSaveDraft}
-            >
-              Save draft
-            </button>
+            <div className="container d-flex justify-content-between align-items-center flex-wrap">
+              <h3 className="text-light mt-2">Price: 400€</h3>
+              <input id="configName"></input>
+              <div>
+                <button
+                  className="btn btn-secondary btn-lg rounded-0 my-3 mx-2"
+                  onClick={handleSaveDraft}
+                >
+                  Save draft
+                </button>
+                <button
+                  className="btn btn-primary btn-lg rounded-0 my-3 mx-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal"
+                  onClick={handleSubmitRequest}
+                >
+                  Submit request
+                </button>
+              </div>
+            </div>
           </div>
           <Modal>{modalContent}</Modal>
         </>
