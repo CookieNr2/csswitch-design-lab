@@ -44,12 +44,20 @@ export function updateUser(data) {
   return http.patch(`/my-account`, data);
 }
 
+export function deleteUser(data) {
+  return http.delete(`/my-account`, data);
+}
+
 export function createConfig(data) {
   return http.post("/switch-config", data);
 }
 
-export function updateConfig(data) {
-  return http.patch("/switch-config/:id", data);
+export function updateConfig(id) {
+  return http.patch(`/switch-config/${id}`);
+}
+
+export function deleteConfig(id) {
+  return http.delete(`/switch-config/${id}`);
 }
 
 export function getConfigs(data) {
@@ -60,6 +68,10 @@ export function getPopularConfigs(data) {
   return http.get("/popular-configs", data);
 }
 
+export function getAllPopularConfigs(data) {
+  return http.get("/all-popular-configs", data);
+}
+
 export function createOrder(data) {
   return http.post("/orders", data);
 }
@@ -68,8 +80,4 @@ export async function login(data) {
   const response = await http.post("/login", data);
   localStorage.setItem("token", response.data.accessToken);
   return response;
-}
-
-export function logout() {
-  localStorage.removeItem("token");
 }

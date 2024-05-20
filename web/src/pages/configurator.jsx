@@ -19,13 +19,11 @@ function Configurator() {
       try {
         let retrievedStatus = {};
         (await getParts()).data.forEach((element) => {
-          // Cogemos la configuracion inicial y los valores que tiene por defecto
           retrievedStatus[element.name] = {
             ...element,
             color: element.defaultColor,
           };
         });
-        // Si hay un estado le modificamos el color
         if (location.state?.config)
           Object.keys(retrievedStatus).forEach(function (key, index) {
             retrievedStatus[key].color = location.state?.config[key];

@@ -2,7 +2,7 @@ import "./color-radio-button-list.css";
 import ColorRadioButton from "../color-radio-button/ColorRadioButton";
 
 function ColorRadioButtonList({ onChange, tab }) {
-  let selectedColor = "Orange";
+  let selectedColor;
   tab.colorOptions.forEach((elem) => {
     if (elem.name == tab.color.name) selectedColor = elem.name;
   });
@@ -19,7 +19,6 @@ function ColorRadioButtonList({ onChange, tab }) {
         {tab.colorOptions.map((colorOption) => (
           <ColorRadioButton
             key={colorOption.name}
-            className={colorOption.className}
             color={colorOption.value}
             onChange={() => onChange(colorOption)}
             isActive={selectedColor === colorOption.name}

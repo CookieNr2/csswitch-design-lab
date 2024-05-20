@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "663f6c262b66bae3ceac72b3"
+  },
+  "name": "New config",
+  "owner": {
+    "$oid": "663e646b457e67a6732c1f11"
+  },
+  "body": "#353535",
+  "joyControllerLeft": "#d65d9d",
+  "joyControllerRight": "#815790",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-11T13:01:26.763Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-11T13:01:26.763Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664092ea2b66bae3ceac733a"
+  },
+  "name": "New config",
+  "owner": {
+    "$oid": "663e646b457e67a6732c1f11"
+  },
+  "body": "#815790",
+  "joyControllerLeft": "#f6bd60",
+  "joyControllerRight": "#31572c",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-12T09:59:06.341Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-12T09:59:06.341Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6640988c2b66bae3ceac733e"
+  },
+  "name": "New config",
+  "owner": null,
+  "body": "#353535",
+  "joyControllerLeft": "#353535",
+  "joyControllerRight": "#353535",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-12T10:23:08.698Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-12T10:23:08.698Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66463c61d75f692f6c9a9c0f"
+  },
+  "name": "New config",
+  "owner": null,
+  "popularity": 0,
+  "body": "#353535",
+  "joyControllerLeft": "#353535",
+  "joyControllerRight": "#815790",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-16T17:03:29.584Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T17:03:29.584Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66463c6ad75f692f6c9a9c11"
+  },
+  "name": "New config",
+  "owner": null,
+  "popularity": 0,
+  "body": "#353535",
+  "joyControllerLeft": "#009688",
+  "joyControllerRight": "#815790",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-16T17:03:38.072Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T17:03:38.072Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66463c82d75f692f6c9a9c1d"
+  },
+  "name": "New config",
+  "owner": null,
+  "popularity": 0,
+  "body": "#353535",
+  "joyControllerLeft": "#f6bd60",
+  "joyControllerRight": "#3f51b5",
+  "thumbSticks": "#353535",
+  "abxy": "#353535",
+  "dpad": "#353535",
+  "utils": "#353535",
+  "createdAt": {
+    "$date": "2024-05-16T17:04:02.224Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-16T17:04:02.224Z"
+  },
+  "__v": 0
+}]

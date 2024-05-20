@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import ConfigsList from "../components/configurator/configs-list/ConfigsList";
 
 function Home() {
@@ -28,12 +29,13 @@ function Home() {
       </div>
       <div className="container-fluid d-flex flex-column">
         <ConfigsList />
-        <button
+        <NavLink
+          to="/inspiration"
           type="button"
           className="btn btn-lg btn-outline-light align-self-center rounded-0 my-5"
         >
           Find more inspiration
-        </button>
+        </NavLink>
       </div>
     </>
   );

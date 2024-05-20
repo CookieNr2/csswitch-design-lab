@@ -16,7 +16,7 @@ function Navbar() {
           <a
             className="nav-link link-light mb-0"
             aria-current="page"
-            href="#inspiration"
+            href="/inspiration"
           >
             <i className="bi bi-lightbulb-fill px-1"></i>
             <span className="d-sm-none d-md-inline">Find Inspiration</span>

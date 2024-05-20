@@ -11,6 +11,7 @@ const auth = require("../middlewares/auth.middleware");
 // Configurations CRUD
 router.post("/switch-config", auth.checkAuthOpt, switchConfigs.create);
 router.get("/popular-configs", switchConfigs.popular);
+router.get("/all-popular-configs", switchConfigs.allPopular);
 router.get("/switch-config", auth.checkAuth, switchConfigs.list);
 router.get("/switch-config/:id", auth.checkAuth, switchConfigs.detail);
 router.patch("/switch-config/:id", auth.checkAuth, switchConfigs.update);

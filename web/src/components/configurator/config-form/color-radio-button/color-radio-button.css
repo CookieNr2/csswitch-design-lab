@@ -24,7 +24,6 @@ input {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   border-radius: 100%;
-  background: #eeeeee;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   transition: ease 0.3s;
 }
@@ -32,38 +31,6 @@ input {
 .color-selector span:hover {
   width: 60px;
   height: 60px;
-}
-
-.black .color-selector .removed span {
-  background: #353535;
-}
-
-.purple .color-selector .removed span {
-  background: #815790;
-}
-
-.orange .color-selector .removed span {
-  background: #f6bd60;
-}
-
-.sunset-rose .color-selector .removed span {
-  background: #d65d9d;
-}
-
-.lime .color-selector .removed span {
-  background: #31572c;
-}
-
-.teal .color-selector .removed span {
-  background: #009688;
-}
-
-.blue .color-selector .removed span {
-  background: #1d3557;
-}
-
-.indigo .color-selector .removed span {
-  background: #3f51b5;
 }
 
 .active-color {

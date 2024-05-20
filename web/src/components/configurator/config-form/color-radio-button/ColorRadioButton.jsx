@@ -7,7 +7,7 @@ function ColorRadioButton({ className, value, color, onChange, isActive }) {
         <span
           className={`${isActive ? "active-color" : ""}`}
           style={{
-            background: color,
+            backgroundColor: color,
           }}
         ></span>
       </div>

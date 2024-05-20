@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "name": "black",
+  "value": "#353535"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee13"
+  },
+  "name": "purple",
+  "value": "#815790"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee14"
+  },
+  "name": "orange",
+  "value": "#f6bd60"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee15"
+  },
+  "name": "Sunset Rose",
+  "value": "#d65d9d"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee16"
+  },
+  "name": "lime",
+  "value": "#31572c"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee17"
+  },
+  "name": "teal",
+  "value": "#009688"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee18"
+  },
+  "name": "blue",
+  "value": "#1d3557"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee19"
+  },
+  "name": "indigo",
+  "value": "#3f51b5"
+}]

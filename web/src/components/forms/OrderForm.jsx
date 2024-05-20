@@ -8,7 +8,6 @@ function OrderForm({ onSubmit }) {
   } = useForm();
 
   const handleFormSubmit = (data) => {
-    console.log("Form data:", data); // Log form data to check its structure
     onSubmit(data);
   };
 

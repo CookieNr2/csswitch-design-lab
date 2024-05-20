@@ -1,0 +1,346 @@
+[
+  {
+    "_id": "664738aea78ca1580c04ee1b",
+    "name": "body",
+    "displayName": "Body",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee1c",
+    "name": "joyControllerLeft",
+    "displayName": "Joy Controller Left",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee1d",
+    "name": "joyControllerRight",
+    "displayName": "Joy Controller Right",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee1e",
+    "name": "thumbSticks",
+    "displayName": "Thumb Sticks",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee1f",
+    "name": "abxy",
+    "displayName": "ABXY",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee20",
+    "name": "dpad",
+    "displayName": "DPAD",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  },
+  {
+    "_id": "664738aea78ca1580c04ee21",
+    "name": "utils",
+    "displayName": "Utils",
+    "defaultColor": {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    "colorOptions": [
+      {
+        "$oid": "66473694a78ca1580c04ee12"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee13"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee14"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee15"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee16"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee17"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee18"
+      },
+      {
+        "$oid": "66473694a78ca1580c04ee19"
+      }
+    ]
+  }
+]
+
+
+
+
+
+
+{
+  body: {
+    label: "Body",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  joyControllerLeft: {
+    label: "Joy Controller Left",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  joyControllerRight: {
+    label: "Joy Controller Right",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  thumbSticks: {
+    label: "Thumb Sticks",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  abxy: {
+    label: "ABXY",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  dpad: {
+    label: "DPAD",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+  utils: {
+    label: "Utils",
+    color: "#353535",
+    colorOptions: [
+      { value: "black", color: "#353535" },
+      { value: "purple", color: "#815790" },
+      { value: "orange", color: "#f6bd60" },
+      { value: "Sunset Rose", color: "#d65d9d" },
+      { value: "lime", color: "#31572c" },
+      { value: "teal", color: "#009688" },
+      { value: "blue", color: "#1d3557" },
+      { value: "indigo", color: "#3f51b5" },
+    ],
+  },
+}

@@ -1,0 +1,238 @@
+[{
+  "_id": "664738aea78ca1580c04ee1b",
+  "name": "body",
+  "displayName": "Body",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee1c",
+  "name": "joyControllerLeft",
+  "displayName": "Joy Controller Left",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee1d",
+  "name": "joyControllerRight",
+  "displayName": "Joy Controller Right",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee1e",
+  "name": "thumbSticks",
+  "displayName": "Thumb Sticks",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee1f",
+  "name": "abxy",
+  "displayName": "ABXY",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee20",
+  "name": "dpad",
+  "displayName": "DPAD",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+},
+{
+  "_id": "664738aea78ca1580c04ee21",
+  "name": "utils",
+  "displayName": "Utils",
+  "defaultColor": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "colorOptions": [
+    {
+      "$oid": "66473694a78ca1580c04ee12"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee13"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee14"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee15"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee16"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee17"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee18"
+    },
+    {
+      "$oid": "66473694a78ca1580c04ee19"
+    }
+  ]
+}]
