@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const SwitchConfig = require("../models/switchConfig.model");
+const Colors = require("../models/colors.model");
 
 module.exports.create = (req, res, next) => {
   SwitchConfig.create({ ...req.body, owner: req.user?._id })
@@ -13,14 +14,49 @@ module.exports.create = (req, res, next) => {
     });
 };
 
-exports.popular = (req, res, next) => {
+exports.popular = async (req, res, next) => {
   const { limit = process.env.DEFAULT_PAGINATION, page = 0 } = req.query;
-  SwitchConfig.find()
-    .sort({ updatedAt: -1 })
-    .skip(page * limit)
-    .limit(limit)
-    .then((configs) => res.json(configs))
-    .catch(next);
+  try {
+    const popularConfigs = await SwitchConfig.aggregate([
+      {
+        $group: {
+          _id: {
+            body: "$body",
+            joyControllerLeft: "$joyControllerLeft",
+            joyControllerRight: "$joyControllerRight",
+            thumbSticks: "$thumbSticks",
+            abxy: "$abxy",
+            dpad: "$dpad",
+            utils: "$utils",
+          },
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { count: -1 } },
+      { $limit: 6 },
+    ]);
+
+    const colors = await Colors.find();
+    const colorsObject = colors.reduce((acc, color) => {
+      acc[color._id] = color;
+      return acc;
+    }, {});
+
+    const formattedConfigs = popularConfigs.map((config) => {
+      return {
+        body: colorsObject[config._id.body],
+        joyControllerLeft: colorsObject[config._id.joyControllerLeft],
+        joyControllerRight: colorsObject[config._id.joyControllerRight],
+        thumbSticks: colorsObject[config._id.thumbSticks],
+        abxy: colorsObject[config._id.abxy],
+        dpad: colorsObject[config._id.dpad],
+        utils: colorsObject[config._id.utils],
+      };
+    });
+    res.json(formattedConfigs);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports.list = (req, res, next) => {

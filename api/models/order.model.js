@@ -25,6 +25,16 @@ const orderSchema = new Schema(
         required: true,
       },
     },
+    paymentMethod: {
+      type: {
+        type: String,
+        required: true,
+      },
+      cardNumber: {
+        type: String,
+        required: true,
+      },
+    },
     owner: {
       type: mongoose.Types.ObjectId,
       ref: "User",
@@ -33,15 +43,6 @@ const orderSchema = new Schema(
     switchConfig: {
       type: mongoose.Types.ObjectId,
       ref: "Switch Configuration",
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      default: 1,
-    },
-    totalPrice: {
-      type: Number,
       required: true,
     },
   },
