@@ -29,7 +29,6 @@ export function AuthContextProvider({ children }) {
   }
 
   function isLoggedIn() {
-    console.log(user);
     return user;
   }
 

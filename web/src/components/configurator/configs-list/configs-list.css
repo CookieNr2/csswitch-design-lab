@@ -32,4 +32,12 @@
   .configs-list .swGlobal {
     font-size: small;
   }
+  .configs-list > div {
+    max-width: 49%;
+  }
+}
+@media (max-width: 1024px) {
+  .configs-list > div {
+    max-width: 100%;
+  }
 }

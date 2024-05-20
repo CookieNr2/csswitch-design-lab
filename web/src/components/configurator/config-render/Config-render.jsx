@@ -16,7 +16,7 @@ function ConfigRender({ configStatus, isDisplay }) {
     : {};
 
   const styles = `
-    ${uCD}.start::before, ${uCD}.start::after, ${uCD}.home::before, ${uCD}.home::after, ${uCD}.capture::before {
+    ${uCD}.start::before, ${uCD}.start::after, ${uCD}.home::before, ${uCD}.capture::before {
       background-color: ${configStatus["utils"].color.value};
     }
     ${uCD}.stick::before, ${uCD}.stick::after {
@@ -158,7 +158,7 @@ function ConfigRender({ configStatus, isDisplay }) {
             <div
               className={`home ${uD}`}
               style={{
-                backgroundColor: configStatus["utils"].color.value,
+                backgroundColor: `${configStatus["utils"].color.value}e6`,
                 boxShadow: `inset 0 0 0 0.09375em ${configStatus["utils"].color.value}, inset 0 0.25em 0.5em -0.0625em rgba(255, 255, 255, 0.1), inset 0 0.015625em 0.03125em -0.015625em rgba(255, 255, 255, 0.5), inset 0 0 0.03125em rgba(0, 0, 0, 1), 0 0.015625em 0.03125em 0.0625em rgba(0, 0, 0, 0.65)`,
               }}
             ></div>

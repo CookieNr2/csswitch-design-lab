@@ -24,11 +24,20 @@ function Navbar() {
         </div>
         <ul className="mb-0">
           {user ? (
-            <li className="btn btn-link link-light text-decoration-none mx-1">
-              <NavLink to="/profile/configurations">
-                <i className="bi bi-person-circle"></i> My Account
-              </NavLink>
-            </li>
+            <>
+              <li className="btn btn-link link-light text-decoration-none mx-1">
+                <NavLink to="/profile/configurations">
+                  <i className="bi bi-person-circle"></i>
+                  <span className="d-sm-none d-md-inline"> My Account</span>
+                </NavLink>
+              </li>
+              <li className="btn btn-link link-light text-decoration-none mx-1">
+                <NavLink to="/login" onClick={doLogout}>
+                  <i className="bi bi-box-arrow-in-right"></i>
+                  <span className="d-sm-none d-md-inline"> Logout</span>
+                </NavLink>
+              </li>
+            </>
           ) : (
             <>
               <li className="btn btn-link link-light text-decoration-none mx-1">
