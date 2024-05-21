@@ -24,13 +24,13 @@ Run the application:
 
 3) npm start
    
-##Usage
+## Usage
 Launch the Application: Open your web browser and navigate to http://localhost:3000.
 Select Colors: Use the interface to choose your preferred colors for the Nintendo Switch console.
 Create Orders: Once satisfied with the configuration, create an order by following the prompts.
 Save Configurations: Save your custom configurations for future use by clicking the save button.
 
-##Contributing
+## Contributing
 We welcome contributions to enhance the functionality and user experience of CSSwitch Design Lab. To contribute, please follow these steps:
 
 1) Fork the repository.
@@ -40,7 +40,7 @@ We welcome contributions to enhance the functionality and user experience of CSS
 4) Push to the branch (git push origin feature-branch).
 5) Open a pull request.
 
-##License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
