@@ -23,7 +23,7 @@ Install the dependencies:
 Run the application:
 
 3) npm start
-4) 
+   
 ##Usage
 Launch the Application: Open your web browser and navigate to http://localhost:3000.
 Select Colors: Use the interface to choose your preferred colors for the Nintendo Switch console.
