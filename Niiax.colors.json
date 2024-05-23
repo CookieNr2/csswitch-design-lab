@@ -1,0 +1,189 @@
+[{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee12"
+  },
+  "name": "black",
+  "value": "#353535"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee13"
+  },
+  "name": "purple",
+  "value": "#815790"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee14"
+  },
+  "name": "Amber",
+  "value": "#f6bd60"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee15"
+  },
+  "name": "Sunset Rose",
+  "value": "#d65d9d"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee16"
+  },
+  "name": "lime",
+  "value": "#31572c"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee17"
+  },
+  "name": "teal",
+  "value": "#009688"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee18"
+  },
+  "name": "blue",
+  "value": "#1d3557"
+},
+{
+  "_id": {
+    "$oid": "66473694a78ca1580c04ee19"
+  },
+  "name": "indigo",
+  "value": "#3f51b5"
+},
+{
+  "_id": {
+    "$oid": "664b1011a78ca1580c04ee41"
+  },
+  "name": "white",
+  "value": "#f3f3f3"
+},
+{
+  "_id": {
+    "$oid": "664b11b9a78ca1580c04ee49"
+  },
+  "name": "Gold Pink",
+  "value": "#B76E79"
+},
+{
+  "_id": {
+    "$oid": "664b239ca78ca1580c04ee54"
+  },
+  "name": "Lahar",
+  "value": "#5c5552"
+},
+{
+  "_id": {
+    "$oid": "664b2490a78ca1580c04ee5b"
+  },
+  "name": "Green Silk",
+  "value": "#a4c3b2"
+},
+{
+  "_id": {
+    "$oid": "664b9133a78ca1580c04ee66"
+  },
+  "name": "Burnt Sienna",
+  "value": "#E97451"
+},
+{
+  "_id": {
+    "$oid": "664b91fda78ca1580c04ee6e"
+  },
+  "name": "Apricot",
+  "value": "#FBCEB1"
+},
+{
+  "_id": {
+    "$oid": "664b92b5a78ca1580c04ee74"
+  },
+  "name": "Gray",
+  "value": "#606060"
+},
+{
+  "_id": {
+    "$oid": "664b93a5a78ca1580c04ee7b"
+  },
+  "name": "Baby Blue",
+  "value": "#89CFF0"
+},
+{
+  "_id": {
+    "$oid": "664b9422a78ca1580c04ee82"
+  },
+  "name": "Light Blue",
+  "value": "#ADD8E6"
+},
+{
+  "_id": {
+    "$oid": "664b9499a78ca1580c04ee89"
+  },
+  "name": "Beige",
+  "value": "#F5F5DC"
+},
+{
+  "_id": {
+    "$oid": "664b9592a78ca1580c04ee90"
+  },
+  "name": "Lilac",
+  "value": "#C8A2C8"
+},
+{
+  "_id": {
+    "$oid": "664b969ea78ca1580c04ee96"
+  },
+  "name": "Fiddle-Leaf Fig",
+  "value": "#adc178"
+},
+{
+  "_id": {
+    "$oid": "664b97bda78ca1580c04ee9d"
+  },
+  "name": "Muddy Mauve",
+  "value": "#e0b1cb"
+},
+{
+  "_id": {
+    "$oid": "664b9897a78ca1580c04eea6"
+  },
+  "name": "Honeydew Sand",
+  "value": "#f2cc8f"
+},
+{
+  "_id": {
+    "$oid": "664b98eda78ca1580c04eeac"
+  },
+  "name": "Kiwi",
+  "value": "#6a994e"
+},
+{
+  "_id": {
+    "$oid": "664b9961a78ca1580c04eeb2"
+  },
+  "name": "Ambrosia",
+  "value": "#cbdfbd"
+},
+{
+  "_id": {
+    "$oid": "664b9b70a78ca1580c04eeb8"
+  },
+  "name": "Kombucha",
+  "value": "#dda15e"
+},
+{
+  "_id": {
+    "$oid": "664b9bfda78ca1580c04eebe"
+  },
+  "name": "Beau Monde",
+  "value": "#81b29a"
+},
+{
+  "_id": {
+    "$oid": "664b9c5ea78ca1580c04eec4"
+  },
+  "name": "Plummy",
+  "value": "#6d597a"
+}]

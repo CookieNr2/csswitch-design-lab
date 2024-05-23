@@ -15,8 +15,10 @@ app.use(cors);
 
 // Routes
 
-const router = require("./configs/routes.config");
-app.use("/api/v1", router);
+const api = require("./configs/routes.config");
+app.use("/api/v1", api);
+
+app.use("/", require("./web"));
 
 // Error handlers
 

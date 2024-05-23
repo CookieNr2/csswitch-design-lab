@@ -126,7 +126,7 @@
   font-family: "Montserrat", sans-serif;
   background-repeat: no-repeat, repeat;
   background-size: cover;
-  background-image: url("configurator/csswitch-bg.jpg");
+  background-image: url("/configurator/csswitch-bg.jpg");
   border: 1em solid #000;
   border-left-width: 1.5em;
   border-right-width: 1.5em;
