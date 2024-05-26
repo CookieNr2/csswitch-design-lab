@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3000/api/v1",
+  baseURL: "https://csswitch-design-lab.fly.dev/api/v1",
 });
 
 http.interceptors.request.use(function (config) {

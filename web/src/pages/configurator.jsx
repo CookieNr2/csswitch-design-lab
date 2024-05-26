@@ -38,7 +38,7 @@ function Configurator() {
   }, []);
 
   const saveConfig = () => {
-    const modStatus = configStatus;
+    const modStatus = { ...configStatus };
     Object.keys(configStatus).forEach(function (key, index) {
       modStatus[key] = modStatus[key].color;
     });
@@ -64,14 +64,33 @@ function Configurator() {
   };
 
   const handleOrderSubmit = async (data) => {
+    let submitMessage;
     try {
       const config = await saveConfig();
       const orderData = { ...data, switchConfig: config.data };
       await createOrder(orderData);
       console.log("Order submitted:", orderData);
+      submitMessage = "Your order has been created successfully!";
     } catch (error) {
       console.error("Error creating order:", error);
+      submitMessage = "Error creating order";
     }
+    setModalContent(
+      <>
+        <div className="card-body p-5">
+          <p className="text-light mb-3 mt-5">{submitMessage}</p>
+          <div className="modal-footer border-0">
+            <button
+              type="button"
+              className="btn btn-secondary rounded-0"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </>
+    );
   };
 
   function displayConfigurator() {

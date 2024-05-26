@@ -4,6 +4,18 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
 module.exports.create = (req, res, next) => {
+  const { password } = req.body;
+
+  if (!process.env.PASSWORD_REGEX.test(password)) {
+    return res.status(400).json({
+      errors: {
+        password: {
+          message:
+            "Password must include at least one uppercase letter, one number, and one special character.",
+        },
+      },
+    });
+  }
   User.create(req.body)
     .then((user) => res.status(201).json(user))
     .catch((err) => {

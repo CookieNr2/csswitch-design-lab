@@ -32,10 +32,18 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    match: [/.+\@.+\..+/, "Please fill a valid email address"],
   },
   password: {
     type: String,
     required: true,
+    validate: {
+      validator: function (v) {
+        return process.env.PASSWORD_REGEX.test(v);
+      },
+      message: (props) =>
+        "Password must include at least one uppercase letter, one number, and one special character.",
+    },
   },
 });
 

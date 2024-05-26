@@ -1,18 +1,12 @@
-# fly.toml app configuration file generated for iron-fork on 2024-05-09T20:17:56+02:00
+# fly.toml app configuration file generated for csswitch-design-lab on 2024-05-23T22:35:53+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'csswitch'
+app = 'csswitch-design-lab'
 primary_region = 'mad'
 
 [build]
-[build.args]
-  VITE_API_BASE_URL = "https://csswitch.fly.dev/api/v1"
-  VITE_GOOGLE_API_KEY = ""
-
-[env]
-  CORS_ORIGIN = "https://csswitch.fly.dev"
 
 [http_service]
   internal_port = 3000
@@ -25,3 +19,4 @@ primary_region = 'mad'
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
+  cpus = 1

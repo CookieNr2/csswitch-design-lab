@@ -95,7 +95,14 @@ function Register() {
                     className={`form-control ${
                       errors.password ? "is-invalid" : ""
                     } bg-transparent border-0 rounded-0`}
-                    {...register("password")}
+                    {...register("password", {
+                      required: "Password is required",
+                      pattern: {
+                        value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#]).{8,}$/,
+                        message:
+                          "Password must include at least one uppercase letter, one number, and one special character.",
+                      },
+                    })}
                   />
                 </div>
                 <p className="text-white-50 mt-2">

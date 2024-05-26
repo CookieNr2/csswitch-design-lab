@@ -1,6 +1,7 @@
 .configs-list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 .configs-list > div {
   flex: 1 1 33%;
