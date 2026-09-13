@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import UserDataForm from "@/components/forms/UserDataForm";
+import UserDataForm from "@/components/custom/forms/UserDataForm";
 import { requireUser } from "@/lib/auth";
 
 export const metadata: Metadata = { title: "My Data" };

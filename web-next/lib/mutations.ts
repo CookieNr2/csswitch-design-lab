@@ -7,10 +7,7 @@ import { PASSWORD_MESSAGE, PASSWORD_REGEX } from "@/lib/password";
 import type { PartName, SessionUser } from "@/lib/types";
 import type { AccountFields, OrderFields, RegisterFields } from "@/lib/schemas";
 
-/**
- * Input types come from the zod schemas rather than being declared twice:
- * the parser and the type cannot drift apart.
- */
+/** Inferred from the zod schemas, so parser and type cannot drift apart. */
 export type RegisterInput = RegisterFields;
 export type AccountInput = AccountFields;
 export type OrderInput = OrderFields;
@@ -71,8 +68,6 @@ export const updateAccount = async (
       firstName: input.firstName,
       lastName: input.lastName,
       email: input.email,
-      // The old form posted flat fields that the API never mapped onto the
-      // nested schema paths, so address and payment edits silently vanished.
       location: {
         street: input.street || undefined,
         postalCode: input.postalCode ? Number(input.postalCode) : undefined,
@@ -138,8 +133,7 @@ export const deleteConfig = async (userId: string, configId: string) => {
   // A malformed id would otherwise surface as a Mongoose CastError / HTTP 500.
   if (!mongoose.isValidObjectId(configId)) return false;
   await connectToDatabase();
-  // Scoped to the owner: the Express version deleted by id alone, so any
-  // signed-in user could remove somebody else's configuration.
+  // Scoped to the owner: deleting by id alone would let anyone delete anything.
   const result = await SwitchConfigModel.findOneAndDelete({
     _id: configId,
     owner: userId,

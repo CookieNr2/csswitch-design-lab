@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import LoginForm from "@/components/forms/LoginForm";
+import LoginForm from "@/components/custom/forms/LoginForm";
+import { Card } from "@/components/shadcn/card";
 import { getCurrentUser } from "@/lib/auth";
 
 export const metadata: Metadata = { title: "Login" };
@@ -9,14 +10,10 @@ const LoginPage = async () => {
   if (await getCurrentUser()) redirect("/");
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center align-self-center">
-          <div className="card shadow-lg border-0 mt-5">
-            <LoginForm />
-          </div>
-        </div>
-      </div>
+    <div className="container mx-auto flex justify-center px-4 py-12">
+      <Card className="w-full max-w-md rounded-none border-neutral-700 bg-neutral-800 p-0 shadow-lg">
+        <LoginForm />
+      </Card>
     </div>
   );
 };

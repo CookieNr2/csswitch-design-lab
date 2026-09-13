@@ -6,11 +6,7 @@ import { SwitchPartModel } from "@/lib/models/switch-part";
 import { SwitchConfigModel } from "@/lib/models/switch-config";
 import { PART_NAMES, type Color, type PartColors, type SavedConfig, type SwitchPart } from "@/lib/types";
 
-/**
- * Cache tags. Anything that writes designs calls revalidateTag(CONFIGS_TAG),
- * which is what lets the gallery pages be prerendered rather than rebuilt on
- * every request.
- */
+/** Cache tags: writing a design calls updateTag(CONFIGS_TAG) to refresh these. */
 export const CATALOG_TAG = "catalog";
 export const CONFIGS_TAG = "configs";
 
@@ -42,7 +38,7 @@ const colorsById = async (): Promise<Map<string, Color>> => {
   return new Map(colors.map((color) => [color._id, color]));
 };
 
-/** Turns a record of part -> color id into the full color objects, or null if any is unknown. */
+/** Full colour objects for a record of part -> colour id, or null if any is unknown. */
 const resolveColors = (
   source: Record<string, unknown>,
   lookup: Map<string, Color>

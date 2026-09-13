@@ -12,7 +12,7 @@ export const GET = async (request: Request) => {
 };
 
 export const POST = async (request: Request) => {
-  // Anonymous saves are allowed, matching `checkAuthOpt` in the Express API.
+  // Anonymous saves are allowed: a design can be ordered without an account.
   const user = await apiUser(request);
 
   const parsed = configBodySchema.safeParse(await readJson(request));

@@ -1,71 +1,74 @@
-html {
-  box-sizing: border-box;
-  height: 100%;
-}
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-body {
-  background-color: #121212;
-  height: 100%;
-  position: relative;
-}
-.banner {
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    144deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(111, 83, 22, 1) 100%
-  );
-  min-height: 35vw;
-}
-.img-banner {
-  width: 100%;
-  max-width: 700px;
-}
-.navbar a {
-  color: #fff !important;
-  text-decoration: none;
-}
-.sub-nav {
-  background-color: #1d1f21;
-  margin-right: 40px;
-}
-.actions {
-  background-color: #000;
-}
-.btn-primary {
-  background-color: #57cc99;
-  border-color: #57cc99;
-}
-.btn-primary:hover {
-  background-color: #22577a;
-  border-color: #22577a;
-}
-.btn-secondary {
-  border: 1px solid #fff;
-  color: #fff;
-  background: transparent;
-}
-.card-body {
-  background-color: #1f1f1f;
-  min-width: 28rem;
-  border-radius: 0;
-}
-input.form-control {
-  border-bottom: 1px solid #8e8e8e !important;
-  color: #fff !important;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* No bespoke colours: every value here points at Tailwind's own palette, and
+   the app's components use palette utilities (bg-neutral-800, text-neutral-400)
+   directly. This block stays only because shadcn's primitives reference the
+   semantic names internally -- bg-primary, border-input and friends appear 84
+   times across components/shadcn. Removing it raises no error; those utilities
+   just stop being generated and the vendor components lose their colours. */
+@theme inline {
+  --font-sans: var(--font-noto-sans);
+  /* shadcn's card and dialog titles use font-heading. */
+  --font-heading: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
-@media (max-width: 769px) {
-  .d-sm-none {
-    display: none;
+/* Dark-only app, so the palette lives in :root; <html> still carries `dark` so
+   shadcn's own dark: variants resolve against these values. The ramp is
+   900 -> 800 -> 700 rather than each token's individually nearest shade, so
+   cards, hover states and borders stay distinguishable. */
+:root {
+  --background: var(--color-neutral-900);
+  --foreground: var(--color-white);
+
+  --card: var(--color-neutral-800);
+  --card-foreground: var(--color-white);
+  --popover: var(--color-neutral-800);
+  --popover-foreground: var(--color-white);
+
+  --primary: var(--color-emerald-400);
+  --primary-foreground: var(--color-white);
+
+  --secondary: var(--color-neutral-800);
+  --secondary-foreground: var(--color-white);
+
+  --muted: var(--color-neutral-700);
+  --muted-foreground: var(--color-neutral-400);
+
+  --destructive: var(--color-red-400);
+
+  --border: var(--color-neutral-700);
+  --input: var(--color-neutral-400);
+  --ring: var(--color-emerald-400);
+}
+
+@layer base {
+  /*
+   * The only rule here: Tailwind v4 defaults an unqualified `border` to
+   * currentColor, and shadcn's primitives rely on it being the theme border.
+   * Cannot be expressed as a utility because it applies to every element.
+   */
+  * {
+    @apply border-border outline-ring/50;
   }
 }

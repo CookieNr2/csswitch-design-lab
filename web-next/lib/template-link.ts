@@ -1,10 +1,6 @@
 import { PART_NAMES, type PartColors, type PartName } from "@/lib/types";
 
-/**
- * The Vite app passed a template through react-router location state, which
- * disappears on refresh and cannot be shared. The colours now live in the
- * query string, so a design is a real URL.
- */
+/** Colours live in the query string, so a design survives a refresh and can be shared. */
 export const configuratorHref = (colors: PartColors) => {
   const params = new URLSearchParams();
   for (const part of PART_NAMES) params.set(part, colors[part]._id);

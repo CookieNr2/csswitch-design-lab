@@ -1,18 +1,18 @@
 import Link from "next/link";
+import { Button } from "@/components/shadcn/button";
+import { Card } from "@/components/shadcn/card";
 
 const NotFound = () => (
-  <div className="container py-5">
-    <div className="card shadow-lg border-0 mt-5">
-      <div className="card-body p-5">
-        <h1 className="text-light mb-3">Page not found</h1>
-        <p className="text-white-50">
-          That page does not exist. The configurator is a good place to start.
-        </p>
-        <Link className="btn btn-primary btn-lg rounded-0 my-3" href="/configurator">
-          Create Your Design
-        </Link>
-      </div>
-    </div>
+  <div className="container mx-auto px-4 py-12">
+    <Card className="mx-auto max-w-xl rounded-none border-neutral-700 bg-neutral-800 p-8 shadow-lg">
+      <h1 className="mb-3 text-3xl font-semibold">Page not found</h1>
+      <p className="text-neutral-400">
+        That page does not exist. The configurator is a good place to start.
+      </p>
+      <Button asChild className="mt-6 h-11 w-fit rounded-none px-6 text-base">
+        <Link href="/configurator">Create Your Design</Link>
+      </Button>
+    </Card>
   </div>
 );
 

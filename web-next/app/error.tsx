@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
+import { Button } from "@/components/shadcn/button";
+import { Card } from "@/components/shadcn/card";
 
 /**
  * Catches render and data-fetching failures for every route below the root
@@ -18,27 +20,19 @@ const ErrorBoundary = ({
   }, [error]);
 
   return (
-    <div className="container py-5">
-      <div className="card shadow-lg border-0 mt-5">
-        <div className="card-body p-5">
-          <h1 className="text-light mb-3">Something went wrong</h1>
-          <p className="text-white-50">
-            We could not load this page. This is usually temporary.
-          </p>
-          {error.digest && (
-            <p className="text-white-50">
-              <small>Reference: {error.digest}</small>
-            </p>
-          )}
-          <button
-            type="button"
-            className="btn btn-primary btn-lg rounded-0 my-3"
-            onClick={reset}
-          >
-            Try again
-          </button>
-        </div>
-      </div>
+    <div className="container mx-auto px-4 py-12">
+      <Card className="mx-auto max-w-xl rounded-none border-neutral-700 bg-neutral-800 p-8 shadow-lg">
+        <h1 className="mb-3 text-3xl font-semibold">Something went wrong</h1>
+        <p className="text-neutral-400">
+          We could not load this page. This is usually temporary.
+        </p>
+        {error.digest && (
+          <p className="text-sm text-neutral-400">Reference: {error.digest}</p>
+        )}
+        <Button type="button" onClick={reset} className="mt-6 h-11 w-fit rounded-none px-6 text-base">
+          Try again
+        </Button>
+      </Card>
     </div>
   );
 };

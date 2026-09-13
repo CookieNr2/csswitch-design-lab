@@ -4,11 +4,7 @@ import { UserModel } from "@/lib/models/user";
 import { getCurrentUser, verifySessionToken } from "@/lib/auth";
 import type { SessionUser } from "@/lib/types";
 
-/**
- * Route handlers accept either the session cookie (used by this app) or the
- * `Authorization: Bearer <jwt>` header the Express API expected, so existing
- * API clients keep working.
- */
+/** Accepts either the session cookie or an `Authorization: Bearer <jwt>` header. */
 export const apiUser = async (request: Request): Promise<SessionUser | null> => {
   const header = request.headers.get("authorization");
   if (!header) return getCurrentUser();

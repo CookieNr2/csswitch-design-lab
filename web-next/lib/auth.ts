@@ -35,10 +35,6 @@ export const verifySessionToken = async (token: string) => {
   }
 };
 
-/**
- * The token used to live in localStorage, which made it readable by any script
- * on the page. It is now an httpOnly cookie the browser attaches automatically.
- */
 export const startSession = async (userId: string) => {
   const token = await signSessionToken(userId);
   (await cookies()).set(SESSION_COOKIE, token, {
@@ -66,7 +62,6 @@ export const getCurrentUser = async (): Promise<SessionUser | null> => {
   return user ? serialize<SessionUser>(user) : null;
 };
 
-/** For pages and actions that make no sense without an account. */
 export const requireUser = async (): Promise<SessionUser> => {
   const user = await getCurrentUser();
   if (!user) redirect("/login");

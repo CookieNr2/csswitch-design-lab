@@ -8,7 +8,6 @@ import { failed, fields, succeeded, type FormState } from "@/lib/form-state";
 import { configBodySchema, firstIssue, orderSchema } from "@/lib/schemas";
 import { CONFIGS_TAG } from "@/lib/queries";
 
-/** The gallery and the home page both list saved designs. */
 const revalidateGalleries = () => {
   // updateTag (not revalidateTag) so the user immediately sees their own write.
   updateTag(CONFIGS_TAG);
@@ -58,10 +57,7 @@ export const deleteConfigAction = async (
   return succeeded("Configuration deleted.");
 };
 
-/**
- * Ordering saves the configuration first so the order always points at a
- * persisted design, matching the original two-step flow.
- */
+/** Saves the configuration first, so the order always points at a persisted design. */
 export const placeOrderAction = async (
   _previous: FormState,
   formData: FormData

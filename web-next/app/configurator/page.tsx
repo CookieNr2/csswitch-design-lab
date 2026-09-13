@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Configurator from "@/components/configurator/Configurator";
+import Configurator from "@/components/custom/configurator/Configurator";
 import { getSwitchParts } from "@/lib/queries";
 import { readTemplate } from "@/lib/template-link";
 
