@@ -2,9 +2,9 @@
 
 import { useActionState } from "react";
 import { registerAction } from "@/app/actions/auth";
-import { Field } from "./Field";
-import FormAlert from "./FormAlert";
-import SubmitButton from "./SubmitButton";
+import { Field } from "@/components/custom/forms/Field";
+import FormAlert from "@/components/custom/forms/FormAlert";
+import SubmitButton from "@/components/custom/forms/SubmitButton";
 import { idleState } from "@/lib/form-state";
 import { PASSWORD_MESSAGE, PASSWORD_REGEX } from "@/lib/password";
 

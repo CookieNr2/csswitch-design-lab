@@ -2,9 +2,9 @@
 
 import { useActionState, useMemo, useState } from "react";
 import ConfigForm from "./ConfigForm";
-import ConfigRender from "./ConfigRender";
+import OrderFields from "./OrderFields";
+import ConfigRender from "@/components/custom/configurator/ConfigRender";
 import Modal from "@/components/custom/ui/Modal";
-import OrderFields from "@/components/custom/forms/OrderForm";
 import FormAlert from "@/components/custom/forms/FormAlert";
 import SubmitButton from "@/components/custom/forms/SubmitButton";
 import { Button } from "@/components/shadcn/button";

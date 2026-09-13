@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { apiUser, badRequest, notFound, readJson, unauthorized } from "@/lib/api";
-import { deleteConfig, describeError, updateConfig } from "@/lib/mutations";
-import { getConfigById } from "@/lib/queries";
+import { apiUser, badRequest, notFound, readJson, unauthorized } from "@/lib/server/api";
+import { deleteConfig, describeError, updateConfig } from "@/lib/server/mutations";
+import { getConfigById } from "@/lib/server/queries";
 import { configBodySchema, firstIssue } from "@/lib/schemas";
 
 type Context = { params: Promise<{ id: string }> };

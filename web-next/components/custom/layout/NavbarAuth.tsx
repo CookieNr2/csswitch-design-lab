@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CircleUser, LogOut, UserPlus } from "lucide-react";
 import { Button } from "@/components/shadcn/button";
 import { logoutAction } from "@/app/actions/auth";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/server/auth";
 
 /**
  * The only part of the chrome that depends on the request. Kept in its own

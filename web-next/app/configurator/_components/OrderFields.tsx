@@ -1,5 +1,5 @@
-import { Field, SelectField } from "./Field";
-import SubmitButton from "./SubmitButton";
+import { Field, SelectField } from "@/components/custom/forms/Field";
+import SubmitButton from "@/components/custom/forms/SubmitButton";
 
 /**
  * Just the order fields. The enclosing <form> lives in the configurator so the

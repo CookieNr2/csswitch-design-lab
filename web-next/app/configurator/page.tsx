@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Configurator from "@/components/custom/configurator/Configurator";
-import { getSwitchParts } from "@/lib/queries";
+import { getSwitchParts } from "@/lib/server/queries";
 import { readTemplate } from "@/lib/template-link";
+import Configurator from "./_components/Configurator";
 
 export const metadata: Metadata = { title: "Configurator" };
 

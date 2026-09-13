@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { endSession, getCurrentUser } from "@/lib/auth";
-import { deleteAccount, describeError, updateAccount } from "@/lib/mutations";
+import { endSession, getCurrentUser } from "@/lib/server/auth";
+import { deleteAccount, describeError, updateAccount } from "@/lib/server/mutations";
 import { failed, fields, succeeded, type FormState } from "@/lib/form-state";
 import { accountSchema, firstIssue } from "@/lib/schemas";
 

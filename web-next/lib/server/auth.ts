@@ -1,19 +1,18 @@
+import "server-only";
+import { cache } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { SignJWT, jwtVerify } from "jose";
 import { isValidObjectId } from "mongoose";
-import { connectToDatabase, serialize } from "@/lib/db";
-import { UserModel } from "@/lib/models/user";
+import { connectToDatabase, serialize } from "@/lib/server/db";
+import { env } from "@/lib/server/env";
+import { UserModel } from "@/lib/server/models/user";
 import type { SessionUser } from "@/lib/types";
 
 export const SESSION_COOKIE = "token";
 const SESSION_MAX_AGE = 60 * 60; // 1 hour, matching the original JWT lifetime.
 
-const secretKey = () => {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) throw new Error("JWT_SECRET is not set");
-  return new TextEncoder().encode(secret);
-};
+const secretKey = new TextEncoder().encode(env.JWT_SECRET);
 
 export const signSessionToken = async (userId: string) => {
   return new SignJWT({})
@@ -21,12 +20,12 @@ export const signSessionToken = async (userId: string) => {
     .setSubject(userId)
     .setIssuedAt()
     .setExpirationTime(`${SESSION_MAX_AGE}s`)
-    .sign(secretKey());
+    .sign(secretKey);
 };
 
 export const verifySessionToken = async (token: string) => {
   try {
-    const { payload } = await jwtVerify(token, secretKey());
+    const { payload } = await jwtVerify(token, secretKey);
     // A well-signed token can still carry a subject that is not a user id;
     // without this the lookup throws a CastError and surfaces as a 500.
     return payload.sub && isValidObjectId(payload.sub) ? payload.sub : null;
@@ -40,7 +39,7 @@ export const startSession = async (userId: string) => {
   (await cookies()).set(SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: env.isProduction,
     path: "/",
     maxAge: SESSION_MAX_AGE,
   });
@@ -50,7 +49,11 @@ export const endSession = async () => {
   (await cookies()).delete(SESSION_COOKIE);
 };
 
-export const getCurrentUser = async (): Promise<SessionUser | null> => {
+/**
+ * Wrapped in React's cache() so a request looks the session up once, however
+ * many components ask for it (the navbar and the page both do).
+ */
+export const getCurrentUser = cache(async (): Promise<SessionUser | null> => {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!token) return null;
 
@@ -60,7 +63,7 @@ export const getCurrentUser = async (): Promise<SessionUser | null> => {
   await connectToDatabase();
   const user = await UserModel.findById(userId).select("-password").lean();
   return user ? serialize<SessionUser>(user) : null;
-};
+});
 
 export const requireUser = async (): Promise<SessionUser> => {
   const user = await getCurrentUser();

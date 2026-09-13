@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { badRequest, readJson } from "@/lib/api";
-import { createUser, describeError } from "@/lib/mutations";
+import { badRequest, readJson } from "@/lib/server/api";
+import { createUser, describeError } from "@/lib/server/mutations";
 import { firstIssue, registerSchema } from "@/lib/schemas";
 
 export const POST = async (request: Request) => {

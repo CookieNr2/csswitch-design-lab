@@ -4,9 +4,9 @@ import { useActionState, useState } from "react";
 import { deleteAccountAction, updateAccountAction } from "@/app/actions/account";
 import { Button } from "@/components/shadcn/button";
 import Modal from "@/components/custom/ui/Modal";
-import { Field, SelectField } from "./Field";
-import FormAlert from "./FormAlert";
-import SubmitButton from "./SubmitButton";
+import { Field, SelectField } from "@/components/custom/forms/Field";
+import FormAlert from "@/components/custom/forms/FormAlert";
+import SubmitButton from "@/components/custom/forms/SubmitButton";
 import { idleState } from "@/lib/form-state";
 import type { SessionUser } from "@/lib/types";
 

@@ -2,11 +2,11 @@
 
 import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/lib/auth";
-import { createConfig, createOrder, deleteConfig, describeError } from "@/lib/mutations";
+import { getCurrentUser } from "@/lib/server/auth";
+import { createConfig, deleteConfig, describeError, placeOrder } from "@/lib/server/mutations";
 import { failed, fields, succeeded, type FormState } from "@/lib/form-state";
 import { configBodySchema, firstIssue, orderSchema } from "@/lib/schemas";
-import { CONFIGS_TAG } from "@/lib/queries";
+import { CONFIGS_TAG } from "@/lib/server/queries";
 
 const revalidateGalleries = () => {
   // updateTag (not revalidateTag) so the user immediately sees their own write.
@@ -57,7 +57,6 @@ export const deleteConfigAction = async (
   return succeeded("Configuration deleted.");
 };
 
-/** Saves the configuration first, so the order always points at a persisted design. */
 export const placeOrderAction = async (
   _previous: FormState,
   formData: FormData
@@ -80,15 +79,10 @@ export const placeOrderAction = async (
   const user = await getCurrentUser();
 
   try {
-    const switchConfigId = await createConfig({
+    await placeOrder({
+      order: parsedOrder.data,
+      config: { name, colors },
       ownerId: user?._id ?? null,
-      name,
-      colors,
-    });
-    await createOrder({
-      ...parsedOrder.data,
-      ownerId: user?._id ?? null,
-      switchConfigId,
     });
   } catch (error) {
     return failed(describeError(error));

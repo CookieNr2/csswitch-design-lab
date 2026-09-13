@@ -1,10 +1,12 @@
+import type { Route } from "next";
 import { PART_NAMES, type PartColors, type PartName } from "@/lib/types";
 
 /** Colours live in the query string, so a design survives a refresh and can be shared. */
-export const configuratorHref = (colors: PartColors) => {
+export const configuratorHref = (colors: PartColors): Route => {
   const params = new URLSearchParams();
   for (const part of PART_NAMES) params.set(part, colors[part]._id);
-  return `/configurator?${params.toString()}`;
+  // Built at runtime, so typed routes cannot check it; the path itself is fixed.
+  return `/configurator?${params.toString()}` as Route;
 };
 
 export const readTemplate = (

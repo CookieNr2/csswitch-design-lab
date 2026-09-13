@@ -1,7 +1,8 @@
+import "server-only";
 import { NextResponse } from "next/server";
-import { connectToDatabase, serialize } from "@/lib/db";
-import { UserModel } from "@/lib/models/user";
-import { getCurrentUser, verifySessionToken } from "@/lib/auth";
+import { connectToDatabase, serialize } from "@/lib/server/db";
+import { UserModel } from "@/lib/server/models/user";
+import { getCurrentUser, verifySessionToken } from "@/lib/server/auth";
 import type { SessionUser } from "@/lib/types";
 
 /** Accepts either the session cookie or an `Authorization: Bearer <jwt>` header. */

@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { endSession, startSession } from "@/lib/auth";
-import { authenticate, createUser, describeError } from "@/lib/mutations";
+import { endSession, startSession } from "@/lib/server/auth";
+import { authenticate, createUser, describeError } from "@/lib/server/mutations";
 import { failed, fields, type FormState } from "@/lib/form-state";
 import { firstIssue, loginSchema, registerSchema } from "@/lib/schemas";
 

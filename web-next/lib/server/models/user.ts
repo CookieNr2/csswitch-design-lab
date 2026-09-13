@@ -1,3 +1,4 @@
+import "server-only";
 import bcrypt from "bcrypt";
 import { Schema, model, models, type Model, type InferSchemaType } from "mongoose";
 import { PASSWORD_MESSAGE, PASSWORD_REGEX } from "@/lib/password";

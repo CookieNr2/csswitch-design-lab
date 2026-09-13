@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { signSessionToken, startSession } from "@/lib/auth";
-import { authenticate } from "@/lib/mutations";
-import { badRequest, readJson } from "@/lib/api";
+import { signSessionToken, startSession } from "@/lib/server/auth";
+import { authenticate } from "@/lib/server/mutations";
+import { badRequest, readJson } from "@/lib/server/api";
 import { firstIssue, loginSchema } from "@/lib/schemas";
 
 export const POST = async (request: Request) => {

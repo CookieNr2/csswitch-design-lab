@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { apiUser, badRequest, readJson, unauthorized } from "@/lib/api";
-import { createConfig, describeError } from "@/lib/mutations";
-import { getUserConfigs } from "@/lib/queries";
+import { apiUser, badRequest, readJson, unauthorized } from "@/lib/server/api";
+import { createConfig, describeError } from "@/lib/server/mutations";
+import { getUserConfigs } from "@/lib/server/queries";
 import { configBodySchema, firstIssue } from "@/lib/schemas";
 
 export const GET = async (request: Request) => {

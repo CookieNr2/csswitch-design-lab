@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ConfigsList from "@/components/custom/configurator/ConfigsList";
-import { requireUser } from "@/lib/auth";
-import { getUserConfigs } from "@/lib/queries";
+import { requireUser } from "@/lib/server/auth";
+import { getUserConfigs } from "@/lib/server/queries";
 
 export const metadata: Metadata = { title: "My Configurations" };
 

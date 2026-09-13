@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   output: "standalone",
   // Partial Prerendering: a static shell with dynamic holes streamed in.
   cacheComponents: true,
+  // Type-checks <Link href> against the routes that exist.
+  typedRoutes: true,
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { apiUser, badRequest, notFound, readJson, unauthorized } from "@/lib/api";
-import { deleteAccount, describeError, updateAccount } from "@/lib/mutations";
+import { apiUser, badRequest, notFound, readJson, unauthorized } from "@/lib/server/api";
+import { deleteAccount, describeError, updateAccount } from "@/lib/server/mutations";
 import { accountSchema, firstIssue } from "@/lib/schemas";
 
 export const GET = async (request: Request) => {

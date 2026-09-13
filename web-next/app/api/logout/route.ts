@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { endSession } from "@/lib/auth";
+import { endSession } from "@/lib/server/auth";
 
 export const POST = async () => {
   await endSession();

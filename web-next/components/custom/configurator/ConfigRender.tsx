@@ -1,4 +1,4 @@
-import styles from "@/styles/config-render.module.css";
+import styles from "./config-render.module.css";
 import type { CSSProperties } from "react";
 import type { PartColors } from "@/lib/types";
 

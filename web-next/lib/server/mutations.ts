@@ -1,8 +1,9 @@
+import "server-only";
 import mongoose from "mongoose";
-import { connectToDatabase, serialize } from "@/lib/db";
-import { OrderModel } from "@/lib/models/order";
-import { SwitchConfigModel } from "@/lib/models/switch-config";
-import { UserModel } from "@/lib/models/user";
+import { connectToDatabase, serialize } from "@/lib/server/db";
+import { OrderModel } from "@/lib/server/models/order";
+import { SwitchConfigModel } from "@/lib/server/models/switch-config";
+import { UserModel } from "@/lib/server/models/user";
 import { PASSWORD_MESSAGE, PASSWORD_REGEX } from "@/lib/password";
 import type { PartName, SessionUser } from "@/lib/types";
 import type { AccountFields, OrderFields, RegisterFields } from "@/lib/schemas";
@@ -160,4 +161,14 @@ export const createOrder = async (
   });
 
   return String(order._id);
+};
+
+/** Saves the design first, so an order always points at a persisted configuration. */
+export const placeOrder = async (input: {
+  order: OrderInput;
+  config: { name?: string; colors: Record<PartName, string> };
+  ownerId?: string | null;
+}) => {
+  const switchConfigId = await createConfig({ ...input.config, ownerId: input.ownerId });
+  return createOrder({ ...input.order, ownerId: input.ownerId, switchConfigId });
 };

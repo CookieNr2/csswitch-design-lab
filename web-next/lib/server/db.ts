@@ -1,6 +1,6 @@
+import "server-only";
 import mongoose from "mongoose";
-
-const MONGODB_URI = process.env.MONGODB_URI ?? "mongodb://127.0.0.1:27017/Niiax";
+import { env } from "@/lib/server/env";
 
 type MongooseCache = {
   conn: typeof mongoose | null;
@@ -23,7 +23,7 @@ export const connectToDatabase = async () => {
   if (cached.conn) return cached.conn;
 
   cached.promise ??= mongoose
-    .connect(MONGODB_URI, { bufferCommands: false })
+    .connect(env.MONGODB_URI, { bufferCommands: false })
     .catch((error) => {
       // Let the next call retry instead of caching a rejected promise forever.
       cached.promise = null;

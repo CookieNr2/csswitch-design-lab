@@ -1,9 +1,10 @@
+import "server-only";
 import { isValidObjectId } from "mongoose";
 import { cacheLife, cacheTag } from "next/cache";
-import { connectToDatabase, serialize } from "@/lib/db";
-import { ColorModel } from "@/lib/models/color";
-import { SwitchPartModel } from "@/lib/models/switch-part";
-import { SwitchConfigModel } from "@/lib/models/switch-config";
+import { connectToDatabase, serialize } from "@/lib/server/db";
+import { ColorModel } from "@/lib/server/models/color";
+import { SwitchPartModel } from "@/lib/server/models/switch-part";
+import { SwitchConfigModel } from "@/lib/server/models/switch-config";
 import { PART_NAMES, type Color, type PartColors, type SavedConfig, type SwitchPart } from "@/lib/types";
 
 /** Cache tags: writing a design calls updateTag(CONFIGS_TAG) to refresh these. */

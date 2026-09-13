@@ -1,13 +1,14 @@
 import { z } from "zod";
-import { isValidObjectId } from "mongoose";
 import { PART_NAMES } from "@/lib/types";
 import { PASSWORD_MESSAGE, PASSWORD_REGEX } from "@/lib/password";
 
-/** Every value that reaches the database is parsed by one of these first. */
+/**
+ * Every value that reaches the database is parsed by one of these first.
+ * Nothing here imports server code, so client components can use them too.
+ */
 
-const objectId = z
-  .string()
-  .refine((value) => isValidObjectId(value), "Not a valid id");
+/** An ObjectId in its 24-character hex form, the only shape the app sends. */
+const objectId = z.string().regex(/^[a-f\d]{24}$/i, "Not a valid id");
 
 const trimmed = (label: string, max = 200) =>
   z.string().trim().min(1, `${label} is required`).max(max);

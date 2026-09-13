@@ -3,6 +3,7 @@ import { Noto_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import Navbar from "@/components/custom/layout/Navbar";
 import Footer from "@/components/custom/layout/Footer";
+import { env } from "@/lib/server/env";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -10,11 +11,9 @@ const notoSans = Noto_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
 export const metadata: Metadata = {
   // Resolves the relative image URLs below into absolute ones for crawlers.
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: {
     default: "CSSwitch Design Lab",
     template: "%s | CSSwitch Design Lab",

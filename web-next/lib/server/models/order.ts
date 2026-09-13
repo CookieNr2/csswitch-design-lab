@@ -1,3 +1,4 @@
+import "server-only";
 import { Schema, model, models, type Model, type InferSchemaType } from "mongoose";
 
 const orderSchema = new Schema(

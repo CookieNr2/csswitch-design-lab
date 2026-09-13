@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ConfigsList from "@/components/custom/configurator/ConfigsList";
 import { Button } from "@/components/shadcn/button";
-import { getPopularConfigs } from "@/lib/queries";
+import { getPopularConfigs } from "@/lib/server/queries";
 
 const HomePage = async () => {
   const popular = await getPopularConfigs(6);

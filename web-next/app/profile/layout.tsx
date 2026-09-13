@@ -1,19 +1,16 @@
-import UserNavbar from "@/components/custom/layout/UserNavbar";
-import { requireUser } from "@/lib/auth";
+import UserNavbar from "./_components/UserNavbar";
 
 /**
- * One guard for every profile route: the segment cannot render at all without
- * a session, so no protected markup is ever sent to a signed-out visitor.
+ * Shared chrome only. The session check lives in each profile page instead: a
+ * layout does not re-render on navigation and does not stop its pages from
+ * rendering, so it cannot act as the guard. Leaving the session read out of
+ * here also lets this shell be prerendered.
  */
-const ProfileLayout = async ({ children }: { children: React.ReactNode }) => {
-  await requireUser();
-
-  return (
-    <div className="flex flex-col md:flex-row md:gap-10">
-      <UserNavbar />
-      <div className="flex-1 px-4 py-12">{children}</div>
-    </div>
-  );
-};
+const ProfileLayout = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex flex-col md:flex-row md:gap-10">
+    <UserNavbar />
+    <div className="flex-1 px-4 py-12">{children}</div>
+  </div>
+);
 
 export default ProfileLayout;
