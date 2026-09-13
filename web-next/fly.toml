@@ -1,0 +1,33 @@
+# Set the runtime secrets once (they are not in this file):
+#   fly secrets set MONGODB_URI="mongodb+srv://..." JWT_SECRET="$(openssl rand -hex 32)"
+#
+# Deploy. MONGODB_URI is passed again as a build arg because the gallery pages
+# are prerendered, which runs their database queries during `next build`:
+#   cd web-next
+#   fly deploy --build-arg MONGODB_URI="mongodb+srv://..."
+#
+# The database must be reachable from the builder, so this needs a hosted
+# database (Atlas), not a local one.
+
+app = 'csswitch-design-lab'
+primary_region = 'mad'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+  [build.args]
+    # Not a secret: it is the public origin, and it is baked into the output.
+    NEXT_PUBLIC_SITE_URL = 'https://csswitch-design-lab.fly.dev'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
