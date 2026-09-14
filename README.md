@@ -59,8 +59,6 @@ Conventions:
 - Every module in `lib/server/` starts with `import "server-only"`, so importing one from a Client Component fails the build.
 - Environment variables are read only in `lib/server/env.ts`, which validates them with Zod.
 
-The `api/` (Express) and `web/` (React with Vite) folders contain the original version of the project, which `web-next` replaces.
-
 ## Deployment
 The application is deployed to Fly.io from `web-next/`. The comments in `web-next/fly.toml` and `web-next/Dockerfile` list the secrets and build arguments it needs.
 
