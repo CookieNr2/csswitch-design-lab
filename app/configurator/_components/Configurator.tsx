@@ -4,10 +4,15 @@ import { useActionState, useMemo, useState } from "react";
 import ConfigForm from "./ConfigForm";
 import OrderFields from "./OrderFields";
 import ConfigRender from "@/components/custom/configurator/ConfigRender";
-import Modal from "@/components/custom/ui/Modal";
 import FormAlert from "@/components/custom/forms/FormAlert";
 import SubmitButton from "@/components/custom/forms/SubmitButton";
 import { Button } from "@/components/shadcn/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/shadcn/dialog";
 import { Label } from "@/components/shadcn/label";
 import { Input } from "@/components/shadcn/input";
 import { placeOrderAction, saveConfigAction } from "@/app/actions/configs";
@@ -134,36 +139,41 @@ const Configurator = ({ parts, template }: ConfiguratorProps) => {
 
       {/* The outcome is shown inside the modal, where the user is looking --
           no effect syncing modal state to the action result. */}
-      <Modal
-        open={orderOpen}
-        onClose={() => setOrderOpen(false)}
-        title="Place your order"
-      >
-        {orderState.status === "success" ? (
-          <div className="p-8">
-            <p className="mb-6">{orderState.message}</p>
-            <div className="flex justify-end">
-              <Button
-                type="button"
-                variant="outline"
-                className="h-11 rounded-none px-6"
-                onClick={() => setOrderOpen(false)}
-              >
-                Close
-              </Button>
+      <Dialog open={orderOpen} onOpenChange={setOrderOpen}>
+        {/* The form has no summary to point at, so opt out of aria-describedby. */}
+        <DialogContent
+          aria-describedby={undefined}
+          className="max-h-[90dvh] overflow-y-auto rounded-none border-neutral-700 bg-neutral-800 p-0 sm:max-w-lg"
+        >
+          <DialogHeader className="sr-only">
+            <DialogTitle>Place your order</DialogTitle>
+          </DialogHeader>
+          {orderState.status === "success" ? (
+            <div className="p-8">
+              <p className="mb-6">{orderState.message}</p>
+              <div className="flex justify-end">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-11 rounded-none px-6"
+                  onClick={() => setOrderOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <form action={orderFormAction}>
-            {colorInputs}
-            <input type="hidden" name="name" value={name} readOnly />
-            <div className="px-8 pt-8">
-              <FormAlert state={orderState} />
-            </div>
-            <OrderFields />
-          </form>
-        )}
-      </Modal>
+          ) : (
+            <form action={orderFormAction}>
+              {colorInputs}
+              <input type="hidden" name="name" value={name} readOnly />
+              <div className="px-8 pt-8">
+                <FormAlert state={orderState} />
+              </div>
+              <OrderFields />
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

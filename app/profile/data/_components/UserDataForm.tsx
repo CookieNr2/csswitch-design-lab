@@ -3,7 +3,14 @@
 import { useActionState, useState } from "react";
 import { deleteAccountAction, updateAccountAction } from "@/app/actions/account";
 import { Button } from "@/components/shadcn/button";
-import Modal from "@/components/custom/ui/Modal";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/shadcn/alert-dialog";
 import { Field, SelectField } from "@/components/custom/forms/Field";
 import FormAlert from "@/components/custom/forms/FormAlert";
 import SubmitButton from "@/components/custom/forms/SubmitButton";
@@ -99,25 +106,24 @@ const UserDataForm = ({ user }: { user: SessionUser }) => {
         Delete Account
       </Button>
 
-      <Modal
-        open={confirmingDelete}
-        onClose={() => setConfirmingDelete(false)}
-        title="Confirm deletion"
-      >
-        <div className="p-8">
-          <h3 className="mb-3 text-xl font-semibold">Confirm Deletion</h3>
-          <p className="text-neutral-400">
-            Are you sure you want to delete your account? This action cannot be undone.
-          </p>
-          <form action={deleteFormAction} className="mt-6 flex justify-end gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              className="h-11 rounded-none px-6"
-              onClick={() => setConfirmingDelete(false)}
-            >
+      {/* AlertDialog, not Dialog: a destructive confirmation should not close
+          on an outside click, and Radix focuses Cancel first. */}
+      <AlertDialog open={confirmingDelete} onOpenChange={setConfirmingDelete}>
+        <AlertDialogContent className="gap-6 rounded-none border-neutral-700 bg-neutral-800 p-8 data-[size=default]:max-w-[calc(100%-2rem)] data-[size=default]:sm:max-w-lg">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-xl font-semibold">
+              Confirm Deletion
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-neutral-400">
+              Are you sure you want to delete your account? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          {/* A plain submit button rather than AlertDialogAction, which would
+              close the dialog before the pending state could show. */}
+          <form action={deleteFormAction} className="flex justify-end gap-2">
+            <AlertDialogCancel className="h-11 rounded-none px-6">
               Cancel
-            </Button>
+            </AlertDialogCancel>
             <SubmitButton
               pendingLabel="Deleting…"
               variant="destructive"
@@ -126,8 +132,8 @@ const UserDataForm = ({ user }: { user: SessionUser }) => {
               Delete
             </SubmitButton>
           </form>
-        </div>
-      </Modal>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 };

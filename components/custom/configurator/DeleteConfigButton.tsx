@@ -2,8 +2,9 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { CircleMinus, Loader2 } from "lucide-react";
+import { CircleMinus } from "lucide-react";
 import { deleteConfigAction } from "@/app/actions/configs";
+import { Spinner } from "@/components/shadcn/spinner";
 import { idleState } from "@/lib/form-state";
 
 const DeleteIcon = () => {
@@ -17,7 +18,7 @@ const DeleteIcon = () => {
       className="text-white transition-colors hover:text-red-400 disabled:opacity-50"
     >
       {pending ? (
-        <Loader2 className="size-5 animate-spin" />
+        <Spinner className="size-5" />
       ) : (
         <CircleMinus className="size-5" />
       )}

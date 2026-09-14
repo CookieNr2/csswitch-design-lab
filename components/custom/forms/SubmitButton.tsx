@@ -1,8 +1,8 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { Loader2 } from "lucide-react";
 import { Button } from "@/components/shadcn/button";
+import { Spinner } from "@/components/shadcn/spinner";
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 
@@ -29,7 +29,7 @@ const SubmitButton = ({
       className={cn("h-11 rounded-none px-6 text-base", className)}
       {...props}
     >
-      {pending && <Loader2 className="animate-spin" />}
+      {pending && <Spinner />}
       {pending ? pendingLabel : children}
     </Button>
   );
