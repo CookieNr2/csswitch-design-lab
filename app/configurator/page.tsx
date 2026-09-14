@@ -11,8 +11,15 @@ const ConfiguratorPage = async ({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) => {
   const [parts, params] = await Promise.all([getSwitchParts(), searchParams]);
+  const template = readTemplate(params);
 
-  return <Configurator parts={parts} template={readTemplate(params)} />;
+  return (
+    <Configurator
+      key={new URLSearchParams(template).toString()}
+      parts={parts}
+      template={template}
+    />
+  );
 };
 
 export default ConfiguratorPage;
