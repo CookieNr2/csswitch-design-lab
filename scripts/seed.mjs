@@ -7,7 +7,7 @@
 import { readFile } from "node:fs/promises";
 import mongoose from "mongoose";
 
-// Collection names used by the models in lib/server/models.
+// Collection names used by the models in src/lib/server/models.
 const COLLECTIONS = [
   { name: "colors", file: "colors.json" },
   { name: "switchparts", file: "switchparts.json" },

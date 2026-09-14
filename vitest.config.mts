@@ -7,7 +7,7 @@ export default defineConfig({
   resolve: {
     alias: [
       // Mirrors the "@/*" path in tsconfig.json.
-      { find: /^@\/(.*)$/, replacement: `${root}$1` },
+      { find: /^@\/(.*)$/, replacement: `${root}src/$1` },
       // Next.js resolves `import "server-only"` itself. Plain Node cannot, so
       // tests get an empty module instead.
       { find: /^server-only$/, replacement: `${root}test/server-only.ts` },

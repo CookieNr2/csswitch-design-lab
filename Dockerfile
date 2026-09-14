@@ -6,7 +6,7 @@
 # The build stage needs a REACHABLE database. With cacheComponents enabled the
 # gallery pages and the catalogue API routes are prerendered, and prerendering
 # executes their `"use cache"` queries. Without MONGODB_URI the build stops with
-# an "Invalid environment variables" error from lib/server/env.ts.
+# an "Invalid environment variables" error from src/lib/server/env.ts.
 #
 # Debian-based rather than Alpine so bcrypt uses its prebuilt glibc binary.
 FROM node:22-bookworm-slim AS deps
@@ -26,7 +26,7 @@ ARG MONGODB_URI
 ARG NEXT_PUBLIC_SITE_URL
 ENV MONGODB_URI=$MONGODB_URI
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
-# lib/server/env.ts validates every variable when the build loads server code,
+# src/lib/server/env.ts validates every variable when the build loads server code,
 # so a placeholder is needed here. ENV does not carry over to the runner stage;
 # the real secret is supplied there at runtime.
 ENV JWT_SECRET=build-time-placeholder
