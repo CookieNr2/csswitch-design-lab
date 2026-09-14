@@ -1,8 +1,8 @@
 node_modules
 .next
 .git
-.env
-.env.local
+.vscode
+.env*
 npm-debug.log*
 README.md
 AGENTS.md

@@ -1,4 +1,4 @@
-# Build from inside web-next:
+# Build from the repository root:
 #   docker build -t csswitch \
 #     --build-arg MONGODB_URI="mongodb+srv://..." \
 #     --build-arg NEXT_PUBLIC_SITE_URL="https://csswitch-design-lab.fly.dev" .

@@ -2,8 +2,8 @@
 #   fly secrets set MONGODB_URI="mongodb+srv://..." JWT_SECRET="$(openssl rand -hex 32)"
 #
 # Deploy. MONGODB_URI is passed again as a build arg because the gallery pages
-# are prerendered, which runs their database queries during `next build`:
-#   cd web-next
+# are prerendered, which runs their database queries during `next build`.
+# Run from the repository root:
 #   fly deploy --build-arg MONGODB_URI="mongodb+srv://..."
 #
 # The database must be reachable from the builder, so this needs a hosted

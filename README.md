@@ -9,13 +9,13 @@ CSSwitch Design Lab is a user-friendly application designed to allow users to cu
 - **Save Configurations:** Save your favorite configurations for quick access and future modifications.
 
 ## Tech stack
-Next.js 16 (App Router with Cache Components), React 19, TypeScript, Tailwind CSS 4 with shadcn/ui, MongoDB with Mongoose, Zod and Vitest. The application lives in `web-next/`.
+Next.js 16 (App Router with Cache Components), React 19, TypeScript, Tailwind CSS 4 with shadcn/ui, MongoDB with Mongoose, Zod and Vitest.
 
 ## Installation
 You need Node.js 22 and a MongoDB server.
 
 1) Clone the repository: `git clone https://github.com/CookieNr2/csswitch-design-lab.git`
-2) Go to the application: `cd csswitch-design-lab/web-next`
+2) Go to the project folder: `cd csswitch-design-lab`
 3) Install the dependencies: `npm install`
 4) Create your environment file and fill it in: `cp .env.example .env.local`
 5) Load the colors and switch parts into the database: `npm run seed`
@@ -28,7 +28,7 @@ You need Node.js 22 and a MongoDB server.
 - **Save Configurations:** Save your custom configurations for future use by clicking the save button.
 
 ## Scripts
-Run these from `web-next/`:
+Run these from the project root:
 
 | Command | What it does |
 | --- | --- |
@@ -41,7 +41,7 @@ Run these from `web-next/`:
 
 ## Project structure
 ```
-web-next/
+csswitch-design-lab/
 ├── app/                  Routes. Code used by a single route sits next to it in _components/
 │   ├── (auth)/           /login and /register, sharing one layout
 │   ├── actions/          Server Actions
@@ -60,7 +60,7 @@ Conventions:
 - Environment variables are read only in `lib/server/env.ts`, which validates them with Zod.
 
 ## Deployment
-The application is deployed to Fly.io from `web-next/`. The comments in `web-next/fly.toml` and `web-next/Dockerfile` list the secrets and build arguments it needs.
+The application is deployed to Fly.io from the project root. The comments in `fly.toml` and `Dockerfile` list the secrets and build arguments it needs.
 
 ## Contributing
 We welcome contributions to enhance the functionality and user experience of CSSwitch Design Lab. To contribute, please follow these steps:
