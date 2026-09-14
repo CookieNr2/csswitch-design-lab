@@ -3,10 +3,11 @@
 import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/server/auth";
-import { createConfig, deleteConfig, describeError, placeOrder } from "@/lib/server/mutations";
+import { CONFIGS_TAG, createConfig, deleteConfig } from "@/lib/server/configs";
+import { describeError } from "@/lib/server/errors";
+import { placeOrder } from "@/lib/server/orders";
 import { failed, fields, succeeded, type FormState } from "@/lib/form-state";
 import { configBodySchema, firstIssue, orderSchema } from "@/lib/schemas";
-import { CONFIGS_TAG } from "@/lib/server/queries";
 
 const revalidateGalleries = () => {
   // updateTag (not revalidateTag) so the user immediately sees their own write.
@@ -27,7 +28,7 @@ export const saveConfigAction = async (
   const { name, ...colors } = parsed.data;
 
   try {
-    await createConfig({ ownerId: user._id, name, colors });
+    await createConfig(user, { name, colors });
   } catch (error) {
     return failed(describeError(error));
   }
@@ -47,7 +48,7 @@ export const deleteConfigAction = async (
   if (typeof configId !== "string") return failed("Configuration not found.");
 
   try {
-    const deleted = await deleteConfig(user._id, configId);
+    const deleted = await deleteConfig(user, configId);
     if (!deleted) return failed("Configuration not found.");
   } catch (error) {
     return failed(describeError(error));
@@ -79,11 +80,7 @@ export const placeOrderAction = async (
   const user = await getCurrentUser();
 
   try {
-    await placeOrder({
-      order: parsedOrder.data,
-      config: { name, colors },
-      ownerId: user?._id ?? null,
-    });
+    await placeOrder(user, { order: parsedOrder.data, config: { name, colors } });
   } catch (error) {
     return failed(describeError(error));
   }

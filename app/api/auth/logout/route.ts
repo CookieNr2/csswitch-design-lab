@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { noContent } from "@/lib/server/api";
 import { endSession } from "@/lib/server/auth";
 
 export const POST = async () => {
   await endSession();
-  return new NextResponse(null, { status: 204 });
+  return noContent();
 };

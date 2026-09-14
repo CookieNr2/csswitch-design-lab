@@ -13,7 +13,7 @@ const objectId = z.string().regex(/^[a-f\d]{24}$/i, "Not a valid id");
 const trimmed = (label: string, max = 200) =>
   z.string().trim().min(1, `${label} is required`).max(max);
 
-export const emailSchema = z.string().trim().toLowerCase().email("Enter a valid email address");
+const emailSchema = z.string().trim().toLowerCase().email("Enter a valid email address");
 
 export const loginSchema = z.object({
   email: emailSchema,
@@ -49,18 +49,13 @@ export const accountSchema = z.object({
     .or(z.literal("")),
 });
 
-/** One colour id per configurable part. Rejects unknown keys by construction. */
+/** One colour id per configurable part. Unknown keys are dropped. */
 export const partColorsSchema = z.object(
   Object.fromEntries(PART_NAMES.map((part) => [part, objectId])) as Record<
     (typeof PART_NAMES)[number],
     typeof objectId
   >
 );
-
-export const configSchema = z.object({
-  name: z.string().trim().max(120).optional(),
-  colors: partColorsSchema,
-});
 
 export const orderSchema = z.object({
   firstName: trimmed("First name"),
@@ -76,7 +71,7 @@ export const orderSchema = z.object({
   }),
 });
 
-/** The REST shape: colours sit at the top level next to `name`. */
+/** The shape forms and the REST API send: colours sit at the top level next to `name`. */
 export const configBodySchema = partColorsSchema.extend({
   name: z.string().trim().max(120).optional(),
 });
@@ -89,8 +84,6 @@ export const orderBodySchema = orderSchema.extend({
 export const firstIssue = (error: z.ZodError): string =>
   error.issues[0]?.message ?? "Please review the form data.";
 
-export type LoginFields = z.infer<typeof loginSchema>;
 export type RegisterFields = z.infer<typeof registerSchema>;
 export type AccountFields = z.infer<typeof accountSchema>;
 export type OrderFields = z.infer<typeof orderSchema>;
-export type ConfigFields = z.infer<typeof configSchema>;

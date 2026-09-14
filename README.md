@@ -40,16 +40,28 @@ Run these from the project root:
 | `npm run seed` | Loads the colors and switch parts into empty collections |
 
 ## Project structure
+The layout follows the "split project files by feature or route" strategy from the [Next.js project structure guide](https://nextjs.org/docs/app/getting-started/project-structure#split-project-files-by-feature-or-route): `app/` holds the routes and the files only one route uses, and everything shared lives at the project root.
+
 ```
 csswitch-design-lab/
 ├── app/                  Routes. Code used by a single route sits next to it in _components/
 │   ├── (auth)/           /login and /register, sharing one layout
-│   ├── actions/          Server Actions
-│   └── api/              REST route handlers
+│   └── api/              REST Route Handlers (see "REST API" below)
 ├── components/custom/    Components shared by more than one route
 ├── components/shadcn/    Generated shadcn/ui components
 ├── lib/                  Code that is safe to import anywhere: schemas, types, helpers
-├── lib/server/           Server-only code: environment, database, auth, queries, mutations
+├── lib/actions/          Server Actions, used by the forms
+├── lib/server/           Server-only code, one file per domain:
+│   ├── auth.ts           Session cookie or Bearer token -> AuthenticatedUser
+│   ├── catalog.ts        Colors and switch parts (read-only, cached)
+│   ├── configs.ts        Saved designs and the popular galleries
+│   ├── users.ts          Registration, login and account
+│   ├── orders.ts         Orders
+│   ├── dto.ts            Turns database documents into the plain objects in lib/types.ts
+│   ├── errors.ts         Turns failures into messages for the user
+│   ├── api.ts            Response helpers for the Route Handlers
+│   ├── db.ts, env.ts     Database connection and validated environment variables
+│   └── models/           Mongoose schemas
 ├── data/                 Seed data for the colors and switch parts
 └── scripts/seed.mjs      Loads that seed data
 ```
@@ -58,6 +70,26 @@ Conventions:
 - React component files use PascalCase. Every other file uses kebab-case, including the shadcn/ui components, which keep the names the shadcn CLI gives them.
 - Every module in `lib/server/` starts with `import "server-only"`, so importing one from a Client Component fails the build.
 - Environment variables are read only in `lib/server/env.ts`, which validates them with Zod.
+- Server Actions and Route Handlers stay thin: parse the input with a schema from `lib/schemas.ts`, call a function in `lib/server/`, revalidate.
+- A data function that acts for a user takes an `AuthenticatedUser`, which only `getCurrentUser()` and `requireUser()` in `lib/server/auth.ts` can create. The ownership checks live inside those functions, so no caller can skip them.
+- Nothing leaves `lib/server/` as a Mongoose document. `dto.ts` copies named fields into plain objects, so the password hash and other internal fields cannot reach a page or an API response.
+
+## REST API
+Authenticate with the session cookie, or send `Authorization: Bearer <accessToken>` using the token from `POST /api/auth/login`.
+
+| Method and path | Sign-in | What it does |
+| --- | --- | --- |
+| `POST /api/auth/register` | — | Creates an account |
+| `POST /api/auth/login` | — | Starts a session and returns an `accessToken` |
+| `POST /api/auth/logout` | — | Ends the cookie session |
+| `GET`, `PATCH`, `DELETE /api/me` | Required | Reads, updates or deletes your account |
+| `GET /api/colors` | — | The color catalog |
+| `GET /api/switch-parts` | — | The switch parts with their color options |
+| `GET /api/configs/popular?limit=6` | — | The most-saved designs; `limit=0` returns all of them |
+| `GET /api/configs` | Required | Your saved designs |
+| `POST /api/configs` | Optional | Saves a design |
+| `GET`, `PATCH`, `DELETE /api/configs/:id` | Required | One of your own designs |
+| `POST /api/orders` | Optional | Orders a saved design |
 
 ## Rendering and caching
 The app uses Next.js Cache Components (`cacheComponents: true`). Pages don't use a single strategy: each part is rendered in the way that suits its data.
@@ -78,8 +110,8 @@ The app uses Next.js Cache Components (`cacheComponents: true`). Pages don't use
 - No page uses pure client-side rendering (CSR), which would load more slowly and be worse for SEO.
 
 ### How the cache stays fresh
-- Cached queries are the `"use cache"` functions in `lib/server/queries.ts`.
-- Saving, deleting or ordering a design calls `updateTag(CONFIGS_TAG)`, so the popular designs update immediately.
+- Cached queries are the `"use cache"` functions in `lib/server/catalog.ts` and `lib/server/configs.ts`.
+- Saving, deleting or ordering a design, or deleting an account, calls `updateTag(CONFIGS_TAG)` from the Server Action, so the popular designs update immediately. The Route Handlers call `revalidateTag(CONFIGS_TAG, "max")` instead (`updateTag` only works in Server Actions), so API writes show up after a background refresh.
 - Logging in, logging out or changing the account calls `revalidatePath("/", "layout")`.
 - Nothing clears `CATALOG_TAG`, so after editing colors or parts directly in MongoDB the old catalog can show for up to an hour.
 

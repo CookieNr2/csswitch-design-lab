@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
-import { apiUser, badRequest, readJson } from "@/lib/server/api";
-import { createOrder, describeError } from "@/lib/server/mutations";
+import { badRequest, readJson } from "@/lib/server/api";
+import { getCurrentUser } from "@/lib/server/auth";
+import { describeError } from "@/lib/server/errors";
+import { createOrder } from "@/lib/server/orders";
 import { firstIssue, orderBodySchema } from "@/lib/schemas";
 
 export const POST = async (request: Request) => {
-  const user = await apiUser(request);
+  // Anonymous orders are allowed, as in the configurator.
+  const user = await getCurrentUser();
 
   const parsed = orderBodySchema.safeParse(await readJson(request));
   if (!parsed.success) return badRequest(firstIssue(parsed.error));
@@ -13,11 +16,7 @@ export const POST = async (request: Request) => {
   const switchConfigId = typeof switchConfig === "string" ? switchConfig : switchConfig._id;
 
   try {
-    const id = await createOrder({
-      ...order,
-      ownerId: user?._id ?? null,
-      switchConfigId,
-    });
+    const id = await createOrder(user, order, switchConfigId);
     return NextResponse.json({ _id: id }, { status: 201 });
   } catch (error) {
     return badRequest(describeError(error));

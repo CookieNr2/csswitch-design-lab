@@ -33,12 +33,3 @@ export const connectToDatabase = async () => {
   cached.conn = await cached.promise;
   return cached.conn;
 };
-
-/**
- * Mongoose documents carry ObjectIds and Dates that cannot cross the
- * server/client component boundary. Everything leaving this layer goes
- * through here first.
- */
-export const serialize = <T>(value: unknown): T => {
-  return JSON.parse(JSON.stringify(value)) as T;
-};

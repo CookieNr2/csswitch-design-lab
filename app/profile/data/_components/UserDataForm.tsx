@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { deleteAccountAction, updateAccountAction } from "@/app/actions/account";
+import { deleteAccountAction, updateAccountAction } from "@/lib/actions/account";
 import { Button } from "@/components/shadcn/button";
 import {
   AlertDialog,

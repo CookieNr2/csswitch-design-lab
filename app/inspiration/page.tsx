@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ConfigsList from "@/components/custom/configurator/ConfigsList";
-import { getPopularConfigs } from "@/lib/server/queries";
+import { getPopularConfigs } from "@/lib/server/configs";
 
 export const metadata: Metadata = { title: "Inspiration Gallery" };
 

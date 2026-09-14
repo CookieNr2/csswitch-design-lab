@@ -1,18 +1,25 @@
 import "server-only";
 import { Schema, model, models, type Model, type InferSchemaType } from "mongoose";
-import { PART_NAMES } from "@/lib/types";
+import { PART_NAMES, type PartName } from "@/lib/types";
 
-const colorRef = () => ({
-  type: Schema.Types.ObjectId,
-  ref: "Colors",
-  required: true,
-});
+const colorRef = () =>
+  ({
+    type: Schema.Types.ObjectId,
+    ref: "Colors",
+    required: true,
+  }) as const;
+
+// Built from PART_NAMES so adding a part needs no edit here. The cast tells
+// InferSchemaType which fields that produces; Object.fromEntries cannot.
+const partFields = Object.fromEntries(
+  PART_NAMES.map((part) => [part, colorRef()])
+) as Record<PartName, ReturnType<typeof colorRef>>;
 
 const switchConfigSchema = new Schema(
   {
     name: { type: String },
     owner: { type: Schema.Types.ObjectId, ref: "User", default: null },
-    ...Object.fromEntries(PART_NAMES.map((part) => [part, colorRef()])),
+    ...partFields,
   },
   { timestamps: true }
 );

@@ -1,9 +1,11 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { endSession, getCurrentUser } from "@/lib/server/auth";
-import { deleteAccount, describeError, updateAccount } from "@/lib/server/mutations";
+import { CONFIGS_TAG } from "@/lib/server/configs";
+import { describeError } from "@/lib/server/errors";
+import { deleteAccount, updateAccount } from "@/lib/server/users";
 import { failed, fields, succeeded, type FormState } from "@/lib/form-state";
 import { accountSchema, firstIssue } from "@/lib/schemas";
 
@@ -18,7 +20,7 @@ export const updateAccountAction = async (
   if (!parsed.success) return failed(firstIssue(parsed.error));
 
   try {
-    const updated = await updateAccount(user._id, parsed.data);
+    const updated = await updateAccount(user, parsed.data);
     if (!updated) return failed("User not found.");
   } catch (error) {
     return failed(describeError(error));
@@ -36,12 +38,14 @@ export const deleteAccountAction = async (
   if (!user) return failed("Please log in first.");
 
   try {
-    await deleteAccount(user._id);
+    await deleteAccount(user);
     await endSession();
   } catch (error) {
     return failed(describeError(error));
   }
 
+  // The account's designs are gone, so the popular galleries change too.
+  updateTag(CONFIGS_TAG);
   revalidatePath("/", "layout");
   redirect("/");
 };

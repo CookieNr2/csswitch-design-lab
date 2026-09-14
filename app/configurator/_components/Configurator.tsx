@@ -15,7 +15,7 @@ import {
 } from "@/components/shadcn/dialog";
 import { Label } from "@/components/shadcn/label";
 import { Input } from "@/components/shadcn/input";
-import { placeOrderAction, saveConfigAction } from "@/app/actions/configs";
+import { placeOrderAction, saveConfigAction } from "@/lib/actions/configs";
 import { idleState } from "@/lib/form-state";
 import {
   PART_NAMES,

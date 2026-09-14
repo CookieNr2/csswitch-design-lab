@@ -1,25 +1,7 @@
 import "server-only";
 import { NextResponse } from "next/server";
-import { connectToDatabase, serialize } from "@/lib/server/db";
-import { UserModel } from "@/lib/server/models/user";
-import { getCurrentUser, verifySessionToken } from "@/lib/server/auth";
-import type { SessionUser } from "@/lib/types";
 
-/** Accepts either the session cookie or an `Authorization: Bearer <jwt>` header. */
-export const apiUser = async (request: Request): Promise<SessionUser | null> => {
-  const header = request.headers.get("authorization");
-  if (!header) return getCurrentUser();
-
-  const [scheme, token] = header.split(" ");
-  if (scheme?.toUpperCase() !== "BEARER" || !token) return null;
-
-  const userId = await verifySessionToken(token);
-  if (!userId) return null;
-
-  await connectToDatabase();
-  const user = await UserModel.findById(userId).select("-password").lean();
-  return user ? serialize<SessionUser>(user) : null;
-};
+/** Responses and body parsing shared by the Route Handlers in app/api. */
 
 export const unauthorized = () => {
   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
@@ -31,6 +13,10 @@ export const notFound = (message = "Not found") => {
 
 export const badRequest = (message: string) => {
   return NextResponse.json({ message }, { status: 400 });
+};
+
+export const noContent = () => {
+  return new NextResponse(null, { status: 204 });
 };
 
 export const readJson = async (request: Request): Promise<Record<string, unknown>> => {

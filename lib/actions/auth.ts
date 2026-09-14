@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { endSession, startSession } from "@/lib/server/auth";
-import { authenticate, createUser, describeError } from "@/lib/server/mutations";
+import { describeError } from "@/lib/server/errors";
+import { authenticate, createUser } from "@/lib/server/users";
 import { failed, fields, type FormState } from "@/lib/form-state";
 import { firstIssue, loginSchema, registerSchema } from "@/lib/schemas";
 

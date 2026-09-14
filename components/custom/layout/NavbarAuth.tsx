@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CircleUser, LogOut, UserPlus } from "lucide-react";
 import { Button } from "@/components/shadcn/button";
-import { logoutAction } from "@/app/actions/auth";
+import { logoutAction } from "@/lib/actions/auth";
 import { getCurrentUser } from "@/lib/server/auth";
 
 /**

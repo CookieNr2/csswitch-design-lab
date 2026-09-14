@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import ConfigsList from "@/components/custom/configurator/ConfigsList";
 import { requireUser } from "@/lib/server/auth";
-import { getUserConfigs } from "@/lib/server/queries";
+import { getUserConfigs } from "@/lib/server/configs";
 
 export const metadata: Metadata = { title: "My Configurations" };
 
 const UserConfigsPage = async () => {
   const user = await requireUser();
-  const configs = await getUserConfigs(user._id);
+  const configs = await getUserConfigs(user);
 
   return (
     <>

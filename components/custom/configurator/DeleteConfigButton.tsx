@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { CircleMinus } from "lucide-react";
-import { deleteConfigAction } from "@/app/actions/configs";
+import { deleteConfigAction } from "@/lib/actions/configs";
 import { Spinner } from "@/components/shadcn/spinner";
 import { idleState } from "@/lib/form-state";
 
