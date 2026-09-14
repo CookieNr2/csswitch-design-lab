@@ -59,6 +59,30 @@ Conventions:
 - Every module in `lib/server/` starts with `import "server-only"`, so importing one from a Client Component fails the build.
 - Environment variables are read only in `lib/server/env.ts`, which validates them with Zod.
 
+## Rendering and caching
+The app uses Next.js Cache Components (`cacheComponents: true`). Pages don't use a single strategy: each part is rendered in the way that suits its data.
+
+| Part | Strategy | Why |
+| --- | --- | --- |
+| Layout, footer and the static part of the navbar | SSG (prerendered at build time) | The same for every visitor |
+| Colors and switch parts | ISR, cached for hours | They rarely change |
+| Popular designs on `/` and `/inspiration` | ISR, cached for minutes | Public, but new designs should show up quickly |
+| Login and account buttons in the navbar | SSR, inside `<Suspense>` | They depend on the session cookie |
+| `/configurator` | SSR, with the catalog read from the cache | The template colors come from the URL |
+| Color picker, dialogs and forms | Client Components | They react to every click |
+| `/profile/*`, `/login` and `/register` | SSR, not cached | They depend on the user |
+
+### Why this mix
+- Public content is prerendered or cached, so pages load fast, work well for SEO and query MongoDB less often.
+- Only the parts that depend on the user render on every request. Wrapping the navbar's session buttons in `<Suspense>` keeps the rest of each page static.
+- No page uses pure client-side rendering (CSR), which would load more slowly and be worse for SEO.
+
+### How the cache stays fresh
+- Cached queries are the `"use cache"` functions in `lib/server/queries.ts`.
+- Saving, deleting or ordering a design calls `updateTag(CONFIGS_TAG)`, so the popular designs update immediately.
+- Logging in, logging out or changing the account calls `revalidatePath("/", "layout")`.
+- Nothing clears `CATALOG_TAG`, so after editing colors or parts directly in MongoDB the old catalog can show for up to an hour.
+
 ## Deployment
 The application is deployed to Fly.io from the project root. The comments in `fly.toml` and `Dockerfile` list the secrets and build arguments it needs.
 
